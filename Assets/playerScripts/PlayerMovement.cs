@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     private SpriteRenderer sprite;
 
+    private float timebtwAttack;
+    public float startTimeBtwAttack;
 
     private enum MovementState
     {
@@ -42,14 +44,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         dirX = Input.GetAxisRaw("Horizontal");
-        att = Input.GetMouseButtonDown(0);
+        //att = Input.GetKey(KeyCode.H);
+
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         
         
-        if (Input.GetButtonDown("Jump"))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
+        
         
 
         UpdateAnimationState();
@@ -73,19 +73,18 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            
             state = MovementState.idle;
-            
-        }
-        if (rb.velocity.y > .1f)
-        {
-            
-            state = MovementState.attacking;
-            Debug.Log("Attack triggered");
 
         }
       
-
         anim.SetInteger("state", (int)state);
+        
+
+     
+
+
+            
 
     }
 
