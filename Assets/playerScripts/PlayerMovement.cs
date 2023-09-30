@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     private float timebtwAttack;
     public float startTimeBtwAttack;
 
+    [SerializeField] private AudioSource running_sound;
+
+    //[SerializeField] private Transform characterTransform;
+
     private enum MovementState
     {
         idle,
@@ -61,20 +65,35 @@ public class PlayerMovement : MonoBehaviour
         MovementState state;
         if (dirX > 0f)
         {
+            
             state = MovementState.running;
+            if(!running_sound.isPlaying)
+            {
+                running_sound.Play();
+            }
+            //characterTransform.localScale = new Vector3(1f, 1f, 1f);
             sprite.flipX = false;
+            
 
         }
         else if (dirX < 0f)
         {
+            ;
             state = MovementState.running;
+            if (!running_sound.isPlaying)
+            {
+                running_sound.Play();
+            }
+            //characterTransform.localScale = new Vector3(-1f, 1f, 1f);
             sprite.flipX = true;
+            
 
         }
         else
         {
-            
+            running_sound.Stop();
             state = MovementState.idle;
+            //characterTransform.localScale = new Vector3(1f, 1f, 1f);
 
         }
       
