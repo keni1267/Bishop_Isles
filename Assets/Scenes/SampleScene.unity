@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 171523576}
   - component: {fileID: 171523577}
   - component: {fileID: 171523578}
+  - component: {fileID: 171523579}
   m_Layer: 0
   m_Name: Fisherman
   m_TagString: Untagged
@@ -206,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171523570}
   m_LocalRotation: {x: -0.004363709, y: -0.0020063883, z: 0.00016576024, w: 0.9999885}
-  m_LocalPosition: {x: -5.22, y: 1.81, z: 0.020000458}
+  m_LocalPosition: {x: -6.49, y: 2.92, z: 0.02}
   m_LocalScale: {x: 5, y: 5, z: 0.46}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -302,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 171523576}
   attackPoint: {fileID: 573574610}
-  attackRange: 2.37
+  attackRange: 0.31
   enemyLayers:
     serializedVersion: 2
     m_Bits: 8
@@ -404,6 +405,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &171523579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171523570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045b1281fbbb62c409163e8f4b767666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirx: 0
+  fishermen: {fileID: 171523570}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573574610}
+  - component: {fileID: 573574611}
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
@@ -511,14 +527,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573574609}
-  m_LocalRotation: {x: -0.0020944288, y: 0, z: 0, w: 0.99999785}
-  m_LocalPosition: {x: 0.98, y: 0, z: 0}
+  m_LocalRotation: {x: -0.002094428, y: -0, z: -9.094947e-13, w: 0.99999785}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 171523572}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.24, y: 0, z: 0}
+--- !u!114 &573574611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573574609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12bec1c92e29a1468277f34636f4c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirx: 0
 --- !u!1 &863455913
 GameObject:
   m_ObjectHideFlags: 0

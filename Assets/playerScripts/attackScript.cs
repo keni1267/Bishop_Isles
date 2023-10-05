@@ -22,20 +22,25 @@ public class attackScript : MonoBehaviour
 
     void Update()
     {
-        
-        
+        /*Vector3 scale = transform.localScale;
+
+
         dirX = Input.GetAxisRaw("Horizontal");
-        /*if(dirX > 0)
+
+        if (dirX > 0)
         {
-            attackPoint.position = new Vector3(1.06f, 1.81f, 0.02000046f);
+            scale.x = Mathf.Abs(scale.x) * -1;
         }
-        else if( dirX < 0)
+        else if (dirX < 0)
         {
-            attackPoint.position = new Vector3(-1.06f, 1.81f, 0.02000046f);
+            scale.x = Mathf.Abs(scale.x);
 
-        }*/
 
-        
+
+        }
+        attackPoint.localScale = scale;*/
+
+
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
         {   
