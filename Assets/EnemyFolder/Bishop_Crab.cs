@@ -37,8 +37,9 @@ public class Bishop_Crab : MonoBehaviour
         //diable enemy
 
 
-        GetComponent<Collider2D>().enabled = false;
-        //GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Crab_AI>().enabled = false;
         this.enabled= false;
     }
 

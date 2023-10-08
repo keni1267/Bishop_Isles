@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171523570}
   m_LocalRotation: {x: -0.004363709, y: -0.0020063883, z: 0.00016576024, w: 0.9999885}
-  m_LocalPosition: {x: -6.49, y: 2.92, z: 0.02}
+  m_LocalPosition: {x: -7.26, y: 2.2, z: 0.02}
   m_LocalScale: {x: 5, y: 5, z: 0.46}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -329,7 +329,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.0737762
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -721,6 +721,8 @@ MonoBehaviour:
   attack_speed: 8
   lineOfSite: 7.92
   attackRange: 5.11
+  animator: {fileID: 0}
+  delay: 0.03
   waypoints:
   - {fileID: 1173203865}
   - {fileID: 1882433020}
