@@ -267,6 +267,13 @@ MonoBehaviour:
   moveSpeed: 7
   jumpForce: 14
   startTimeBtwAttack: 0
+  animator: {fileID: 171523576}
+  attackPoint: {fileID: 573574610}
+  attackRange: 0.31
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  attackDamage: 5
   running_sound: {fileID: 171523578}
 --- !u!95 &171523576
 Animator:
