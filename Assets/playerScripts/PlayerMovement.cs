@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public int attackDamage = 5;
+    public int attackDamage = 50;
 
 
     [SerializeField] private AudioSource running_sound;

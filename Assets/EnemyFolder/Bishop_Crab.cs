@@ -38,7 +38,8 @@ public class Bishop_Crab : MonoBehaviour
 
 
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        //GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Animator>().enabled = false;
         GetComponent<Crab_AI>().enabled = false;
         this.enabled= false;
     }

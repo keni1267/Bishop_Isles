@@ -314,7 +314,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 8
-  attackDamage: 5
+  attackDamage: 50
   dirX: 0
 --- !u!82 &171523578
 AudioSource:
