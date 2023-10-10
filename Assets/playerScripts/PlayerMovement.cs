@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public int attackDamage = 50;
+    public int attackDamage = 100;
 
 
     [SerializeField] private AudioSource running_sound;
@@ -91,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        Debug.Log("RESTARTEEEEEED");
 
 
 
@@ -104,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         //att = Input.GetKey(KeyCode.H);
 
         bool something=false;
+        bool anotherthing=false;
         //change int.Parse to compare to string in future
         if( controller== 7)
         {last_movement=7;
@@ -127,7 +129,14 @@ public class PlayerMovement : MonoBehaviour
             something=true;
         else if(controller == 9)
             something=false;
-
+        else if(controller==2)
+        {
+            anotherthing=true;
+        }
+        else if(controller==3)
+        {
+            anotherthing=false;
+        }
         float dirX2 = Input.GetAxisRaw("Horizontal");
         
         if(dirX2!=0)
@@ -145,15 +154,18 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(attackCoolDown());
             
         }
-        if (Input.GetKeyDown(KeyCode.Space) || controller == 2) { 
+        if (Input.GetKeyDown(KeyCode.Space) || anotherthing) { 
             rb.velocity = new Vector2(rb.velocity.x, 14f);
-            last_movement = 2;
+
+            Debug.Log("HEEEYYYY");
+            inData=last_movement.ToString()+"\n";
+            Debug.Log(inData);
+            anotherthing=false;
+            
+
             //Debug.Log(KeyCode.Space);
         }
-        if(controller == 3){
-            last_movement = 3;
-            dirX = 0;
-        }
+        
         
 
         if (transform.position.y < -10)
@@ -251,7 +263,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void gameOver()
     {
+        //_t2 = new Thread(_func2);
+       //_t2.Start();
+       _t2.Abort();
+       our_controller.Close();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+
     }
 
 }
