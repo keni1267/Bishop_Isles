@@ -144,6 +144,9 @@ bool something=false;
             StartCoroutine(attackCoolDown());
             
         }
+        if (Input.GetKeyDown(KeyCode.Space)) { 
+            rb.velocity = new Vector2(rb.velocity.x, 14f);
+        }
         
         
 
