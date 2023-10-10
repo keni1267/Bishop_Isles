@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO.Ports;
 using System.Threading;
 using System;
@@ -102,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
            int controller =int.Parse(inData); 
         //att = Input.GetKey(KeyCode.H);
 
-bool something=false;
+        bool something=false;
         //change int.Parse to compare to string in future
         if( controller== 7)
         {last_movement=7;
@@ -147,6 +148,13 @@ bool something=false;
         if (Input.GetKeyDown(KeyCode.Space)) { 
             rb.velocity = new Vector2(rb.velocity.x, 14f);
         }
+
+        if (transform.position.y < -10)
+        {
+            gameOver();
+
+        }
+
         
         
 
@@ -232,6 +240,11 @@ bool something=false;
 
             
 
+    }
+
+    public void gameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
