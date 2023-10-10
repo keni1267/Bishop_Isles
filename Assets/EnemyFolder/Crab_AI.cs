@@ -24,7 +24,7 @@ public class Crab_AI : MonoBehaviour
     #endregion
 
 
-    void Awake()
+   void Awake()
     {
         intTimer = timer;
         anim = GetComponent<Animator>();
@@ -42,16 +42,16 @@ public class Crab_AI : MonoBehaviour
         if (distance_from_player < lineOfSite && distance_from_player > attackRange)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position,attack_speed*Time.deltaTime);  //moves towards player
-            StopAttack();
+           // StopAttack();
 
         }
         else if(distance_from_player <= attackRange && cooling == false){
             Attack();
 
         }
-        if(cooling){
+       if(cooling){
             Cooldown();
-            anim.SetBool("Attack",false);
+             anim.SetBool("Attack",false);
 
         }
         else{

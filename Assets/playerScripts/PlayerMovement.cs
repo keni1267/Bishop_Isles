@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
  
-           int controller =int.Parse(inData); 
+        int controller =int.Parse(inData); 
         //att = Input.GetKey(KeyCode.H);
 
         bool something=false;
@@ -112,7 +112,6 @@ public class PlayerMovement : MonoBehaviour
         else if(controller == 6)
         {last_movement=6;
             dirX = 0;
-
             }
         else if(controller == 4)
             {
@@ -128,12 +127,13 @@ public class PlayerMovement : MonoBehaviour
             something=true;
         else if(controller == 9)
             something=false;
+
         float dirX2 = Input.GetAxisRaw("Horizontal");
         
         if(dirX2!=0)
             dirX = dirX2;
 
-
+       // Debug.log(dirX);
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         
         if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack)||(something && canAttack))
@@ -145,9 +145,16 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(attackCoolDown());
             
         }
-        if (Input.GetKeyDown(KeyCode.Space)) { 
+        if (Input.GetKeyDown(KeyCode.Space) || controller == 2) { 
             rb.velocity = new Vector2(rb.velocity.x, 14f);
+            last_movement = 2;
+            //Debug.Log(KeyCode.Space);
         }
+        if(controller == 3){
+            last_movement = 3;
+            dirX = 0;
+        }
+        
 
         if (transform.position.y < -10)
         {
