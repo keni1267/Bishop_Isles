@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using System.IO.Ports;
+using System.Threading;
+using System;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -21,6 +24,24 @@ public class PlayerMovement : MonoBehaviour
     private float timebtwAttack;
     public float startTimeBtwAttack;
 
+    Thread _t2;
+    bool connected =false;
+    string inData="6\n";
+    int last_movement=0;
+    public static SerialPort our_controller = new SerialPort("/dev/cu.usbserial-0001",115200);
+
+
+    //attack
+     private float attackCooldown = 1.0f;
+    private bool canAttack = true;
+
+    public Animator animator;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public int attackDamage = 100;
+
+
     [SerializeField] private AudioSource running_sound;
 
     //[SerializeField] private Transform characterTransform;
@@ -35,35 +56,167 @@ public class PlayerMovement : MonoBehaviour
 
     
 
-    
+     void _func2(object obj)
+    {
+        //Debug.Log("IM HEREEE");
+        connected =true;
+        try{
+        our_controller.Open();
+        }
+        catch
+        {
+            Debug.Log("NO CONNECTOR");
+            connected=false;
+        }
+        if(connected)
+        while (true)
+        {
+            try{
+            inData = our_controller.ReadLine();
+            if (inData.Length>3)
+            inData="6\n";
+            }
+            catch{Debug.Log("NO CONNECTOR");
+            break;}
+            Debug.Log(inData);
+        }
+
+    }
     private void Start()
     {
+       _t2 = new Thread(_func2);
+       _t2.Start();
+
+
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        
+        Debug.Log("RESTARTEEEEEED");
+
+
+
     }
 
     
     private void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal");
+ 
+        int controller =int.Parse(inData); 
         //att = Input.GetKey(KeyCode.H);
 
+        bool something=false;
+        bool anotherthing=false;
+        //change int.Parse to compare to string in future
+        if( controller== 7)
+        {last_movement=7;
+            dirX = 1;
+            }
+        else if(controller == 6)
+        {last_movement=6;
+            dirX = 0;
+            }
+        else if(controller == 4)
+            {
+            dirX = 0;
+            last_movement=4;
+            }
+        else if(controller == 5)
+        {
+         last_movement=5;
+            dirX = -1;
+        }
+        else if(controller == 8)
+            something=true;
+        else if(controller == 9)
+            something=false;
+        else if(controller==2)
+        {
+            anotherthing=true;
+        }
+        else if(controller==3)
+        {
+            anotherthing=false;
+        }
+        float dirX2 = Input.GetAxisRaw("Horizontal");
+        
+        if(dirX2!=0)
+            dirX = dirX2;
+
+       // Debug.log(dirX);
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         
+        if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack)||(something && canAttack))
+        {   
+            attack();
+            inData=last_movement.ToString()+"\n";
+            canAttack = false;
+            something=false;
+            StartCoroutine(attackCoolDown());
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Space) || anotherthing) { 
+            rb.velocity = new Vector2(rb.velocity.x, 14f);
+
+            Debug.Log("HEEEYYYY");
+            inData=last_movement.ToString()+"\n";
+            Debug.Log(inData);
+            anotherthing=false;
+            
+
+            //Debug.Log(KeyCode.Space);
+        }
         
+        
+
+        if (transform.position.y < -10)
+        {
+            gameOver();
+
+        }
+
         
         
 
         UpdateAnimationState();
 
     }
+    void attack()
+    {
+        animator.SetTrigger("Attack");
         
+        Collider2D[] hitEnemies  = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        //Collider2D[] hitEnemies  = Physics2D.OverlapBoxAll(attackPoint.position, new Vector2(X,Y), enemyLayers);
+
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            
+          enemy.GetComponent<Bishop_Crab>().TakeDamage(attackDamage);
+        }
+        
+          
+    }
+
+    IEnumerator attackCoolDown()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+
+        canAttack = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint== null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        //Gizmos.DrawWireCube(attackPoint.position, new Vector3(X, Y, 1));
+    }
     private void UpdateAnimationState()
     {
         MovementState state;
-        if (dirX > 0f)
+        if (dirX > 0f )
         {
             
             state = MovementState.running;
@@ -80,6 +233,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ;
             state = MovementState.running;
+
             if (!running_sound.isPlaying)
             {
                 running_sound.Play();
@@ -104,6 +258,17 @@ public class PlayerMovement : MonoBehaviour
 
 
             
+
+    }
+
+    public void gameOver()
+    {
+        //_t2 = new Thread(_func2);
+       //_t2.Start();
+       _t2.Abort();
+       our_controller.Close();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
 
     }
 

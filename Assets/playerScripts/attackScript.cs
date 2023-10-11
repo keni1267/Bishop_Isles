@@ -12,7 +12,7 @@ public class attackScript : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public int attackDamage = 5;
+    public int attackDamage = 50;
 
     public float dirX;
     /*public float X;

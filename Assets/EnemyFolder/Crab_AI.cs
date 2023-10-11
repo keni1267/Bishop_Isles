@@ -3,18 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Crab_AI : MonoBehaviour
 {
+    #region Public Variables
     public float speed;
     public float attack_speed;
     public float lineOfSite;
     public float attackRange;
+    public float timer; //attack cooldown
+    #endregion
+    
+
+    #region Private Variables
     private int waypointIndex = 0;
-    public Animator animator;
-    public float delay = 0.03f;
-    private bool attackBlocked;
-  
     private Transform player;
     [SerializeField]
     private Transform[] waypoints;
+    private Animator anim;
+    private bool attackMode;
+    private bool cooling;
+    private float intTimer;
+    #endregion
+
+
+   void Awake()
+    {
+        intTimer = timer;
+        anim = GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -28,10 +42,18 @@ public class Crab_AI : MonoBehaviour
         if (distance_from_player < lineOfSite && distance_from_player > attackRange)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position,attack_speed*Time.deltaTime);  //moves towards player
-            Attack();
+           // StopAttack();
+
         }
-       // else if(distance_from_player <= attackRange)
-            //Attack();
+        else if(distance_from_player <= attackRange && cooling == false){
+            Attack();
+
+        }
+       if(cooling){
+            Cooldown();
+             anim.SetBool("Attack",false);
+
+        }
         else{
             Patrol();     //stable move
         }
@@ -54,18 +76,30 @@ public class Crab_AI : MonoBehaviour
                wp.position, speed* Time.deltaTime);
         }
     }
-    public void Attack(){
-        //if(attackBlocked)
-           //return;
-        animator.SetTrigger("Attack");
-       // attackBlocked = true;
-       // StartCoroutine(DelayAttack());
-    }
-    //private IEnumerator DelayAttack(){
-        //yield return new WaitForSeconds(delay);
-        //attackBlocked = false;
-    //}
-    
 
+    void Attack(){
+        timer = intTimer;       //reset timer when player in attack range
+        attackMode = true;
+        anim.SetBool("Attack",true);
+
+    }
+    void Cooldown(){
+        timer -= Time.deltaTime;
+        if(timer <= 0 && cooling && attackMode){
+            cooling = false;
+            timer = intTimer;
+        }
+
+    }
+    void StopAttack(){
+        cooling = false;
+        attackMode = false;
+        anim.SetBool("Attack",false);
+    }
+    public void TriggerCooling(){
+        cooling = true;
+    }
 }
+
 //https://www.youtube.com/watch?v=lHLZxd0O6XY
+//https://www.youtube.com/watch?v=waj6i9cQ6rM

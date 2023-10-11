@@ -26,13 +26,13 @@ public class rodFlip : MonoBehaviour
         if (dirx == 1)
         {
             
-            ap.transform.position = new Vector3(fishermanX+5, transform.position.y, transform.position.z); //change 1 to fisherman x + 1
+            ap.transform.position = new Vector3(fishermanX+1, transform.position.y, transform.position.z); //change 1 to fisherman x + 1
 
         }
         else if(dirx==-1)
         {
             
-            ap.transform.position = new Vector3(fishermanX-5, transform.position.y, transform.position.z); //change -1 to fisherman x - 1
+            ap.transform.position = new Vector3(fishermanX-1, transform.position.y, transform.position.z); //change -1 to fisherman x - 1
 
 
         }
