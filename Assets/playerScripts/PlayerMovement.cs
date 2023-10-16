@@ -8,7 +8,8 @@ using System;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-
+    private BoxCollider2D CC;
+    [SerializeField] private LayerMask jumpableArea;
     private Animator anim;
 
     private float dirX = 0f;
@@ -51,7 +52,8 @@ public class PlayerMovement : MonoBehaviour
         idle,
         running,
         attacking,
-        jumping
+        jumping,
+        falling
     }
 
     
@@ -87,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
        _t2 = new Thread(_func2);
        _t2.Start();
 
-
+        CC = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -154,9 +156,11 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(attackCoolDown());
             
         }
-        if (Input.GetKeyDown(KeyCode.Space) || anotherthing) { 
-            rb.velocity = new Vector2(rb.velocity.x, 14f);
-
+        
+        if ((Input.GetKeyDown(KeyCode.Space) && isGrounded()/*anotherthing*/) /*&& isGrounded()*/) { 
+   
+            rb.velocity = new Vector2(rb.velocity.x, 12f);
+            
             Debug.Log("HEEEYYYY");
             inData=last_movement.ToString()+"\n";
             Debug.Log(inData);
@@ -250,6 +254,16 @@ public class PlayerMovement : MonoBehaviour
             //characterTransform.localScale = new Vector3(1f, 1f, 1f);
 
         }
+
+        if (rb.velocity.y > .1f) 
+        {
+            state = MovementState.jumping;
+
+        }
+        else if (rb.velocity.y < -.1f)
+        {
+            state = MovementState.falling;
+        }
       
         anim.SetInteger("state", (int)state);
         
@@ -258,6 +272,13 @@ public class PlayerMovement : MonoBehaviour
 
 
             
+
+    }
+
+    private bool isGrounded()
+    {
+        return Physics2D.BoxCast(CC.bounds.center, CC.bounds.size, 0f, Vector2.down, .1f, jumpableArea);
+
 
     }
 
