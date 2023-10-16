@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 171523577}
   - component: {fileID: 171523578}
   - component: {fileID: 171523579}
+  - component: {fileID: 171523580}
   m_Layer: 0
   m_Name: Fisherman
   m_TagString: Player
@@ -453,7 +454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171523570}
   m_LocalRotation: {x: -0.004363709, y: -0.0020063883, z: 0.00016576024, w: 0.9999885}
-  m_LocalPosition: {x: -6.39, y: -2.13, z: -0.14}
+  m_LocalPosition: {x: 37.95, y: -2.1, z: -0.11}
   m_LocalScale: {x: 1.23, y: 1.3569126, z: 0.124835975}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -490,14 +491,14 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171523570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.31, y: 0.88}
+  m_Size: {x: 0.31, y: 0.87}
   m_Direction: 0
 --- !u!114 &171523575
 MonoBehaviour:
@@ -511,6 +512,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19720b93502b23442a91145e0c7c47b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpableArea:
+    serializedVersion: 2
+    m_Bits: 64
   moveSpeed: 7
   jumpForce: 14
   startTimeBtwAttack: 0
@@ -673,6 +677,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirx: 0
   fishermen: {fileID: 171523570}
+--- !u!61 &171523580
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171523570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.33, y: 0.82}
+  m_EdgeRadius: 0
 --- !u!1 &181210498
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +715,7 @@ GameObject:
   - component: {fileID: 181210502}
   - component: {fileID: 181210501}
   - component: {fileID: 181210500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +934,7 @@ GameObject:
   - component: {fileID: 281978355}
   - component: {fileID: 281978354}
   - component: {fileID: 281978359}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sand1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1441,7 +1471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 454078557}
   - component: {fileID: 454078558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock_Pillar_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1525,7 +1555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 474523739}
   - component: {fileID: 474523740}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock_Pillar_Bottom (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1644,15 +1674,15 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: -0
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.19
+  far clip plane: 1000.06
   field of view: 60
   orthographic: 1
-  orthographic size: 3.06
+  orthographic size: 3.09
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1676,7 +1706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0.004363709, y: 0.0020063883, z: -0.00016576024, w: 0.9999885}
-  m_LocalPosition: {x: 3.45, y: 1.14, z: -80.3}
+  m_LocalPosition: {x: 0.43, y: 0.5, z: -80.3}
   m_LocalScale: {x: 0.7369779, y: 0.7370181, z: 8.003223}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1693,7 +1723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 520416563}
   - component: {fileID: 520416564}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Starfish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2212,7 +2242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 863455920}
-  maxHealth: 100
+  maxHealth: 500
 --- !u!61 &863455916
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2591,7 +2621,7 @@ GameObject:
   - component: {fileID: 954860705}
   - component: {fileID: 954860704}
   - component: {fileID: 954860706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2722,7 +2752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971648897}
   - component: {fileID: 971648898}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock_Net (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3016,7 +3046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 994513170}
   - component: {fileID: 994513171}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coconut_Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3184,7 +3214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117670946}
   - component: {fileID: 1117670947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss_Rock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3501,7 +3531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1191085690}
   - component: {fileID: 1191085691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss_Rock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3755,7 +3785,7 @@ GameObject:
   - component: {fileID: 1245420548}
   - component: {fileID: 1245420547}
   - component: {fileID: 1245420549}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3888,7 +3918,7 @@ GameObject:
   - component: {fileID: 1254002820}
   - component: {fileID: 1254002819}
   - component: {fileID: 1254002821}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4319,7 +4349,7 @@ GameObject:
   - component: {fileID: 1320390082}
   - component: {fileID: 1320390081}
   - component: {fileID: 1320390080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sand2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4622,7 +4652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1333027895}
   - component: {fileID: 1333027896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock_Pillar_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4708,7 +4738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1337531596}
   - component: {fileID: 1337531597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss_Rock3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4792,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1352918377}
   - component: {fileID: 1352918378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coconut_Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4964,7 +4994,7 @@ GameObject:
   - component: {fileID: 1500801199}
   - component: {fileID: 1500801202}
   - component: {fileID: 1500801203}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sand2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5353,7 +5383,7 @@ GameObject:
   - component: {fileID: 1583192698}
   - component: {fileID: 1583192699}
   - component: {fileID: 1583192700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5602,7 +5632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1856829399}
   - component: {fileID: 1856829400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Seashell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5886,7 +5916,7 @@ GameObject:
   - component: {fileID: 2007071374}
   - component: {fileID: 2007071376}
   - component: {fileID: 2007071375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
