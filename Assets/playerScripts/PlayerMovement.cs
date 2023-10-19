@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO.Ports;
 using System.Threading;
 using System;
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public int attackDamage = 50;
+    public int attackDamage = 100;
 
 
     [SerializeField] private AudioSource running_sound;
@@ -90,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        Debug.Log("RESTARTEEEEEED");
 
 
 
@@ -99,10 +101,11 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
  
-           int controller =int.Parse(inData); 
+        int controller =int.Parse(inData); 
         //att = Input.GetKey(KeyCode.H);
 
-bool something=false;
+        bool something=false;
+        bool anotherthing=false;
         //change int.Parse to compare to string in future
         if( controller== 7)
         {last_movement=7;
@@ -111,7 +114,6 @@ bool something=false;
         else if(controller == 6)
         {last_movement=6;
             dirX = 0;
-
             }
         else if(controller == 4)
             {
@@ -127,12 +129,20 @@ bool something=false;
             something=true;
         else if(controller == 9)
             something=false;
+        else if(controller==2)
+        {
+            anotherthing=true;
+        }
+        else if(controller==3)
+        {
+            anotherthing=false;
+        }
         float dirX2 = Input.GetAxisRaw("Horizontal");
         
         if(dirX2!=0)
             dirX = dirX2;
 
-
+       // Debug.log(dirX);
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         
         if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack)||(something && canAttack))
@@ -144,9 +154,26 @@ bool something=false;
             StartCoroutine(attackCoolDown());
             
         }
-        if (Input.GetKeyDown(KeyCode.Space)) { 
+        if (Input.GetKeyDown(KeyCode.Space) || anotherthing) { 
             rb.velocity = new Vector2(rb.velocity.x, 14f);
+
+            Debug.Log("HEEEYYYY");
+            inData=last_movement.ToString()+"\n";
+            Debug.Log(inData);
+            anotherthing=false;
+            
+
+            //Debug.Log(KeyCode.Space);
         }
+        
+        
+
+        if (transform.position.y < -10)
+        {
+            gameOver();
+
+        }
+
         
         
 
@@ -231,6 +258,17 @@ bool something=false;
 
 
             
+
+    }
+
+    public void gameOver()
+    {
+        //_t2 = new Thread(_func2);
+       //_t2.Start();
+       _t2.Abort();
+       our_controller.Close();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
 
     }
 
