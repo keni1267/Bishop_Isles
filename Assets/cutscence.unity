@@ -6302,7 +6302,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 716196817}
+  m_Sprite: {fileID: 716196817, guid: 2cda990e2423bbf4892e6590ba056729, type: 2}
   m_Color: {r: 0.95728034, g: 0.662334, b: 0.75991213, a: 1}
   m_Transform:
     e00: 1
