@@ -339,7 +339,7 @@ SpriteRenderer:
   m_Size: {x: 9.1, y: 8.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &36073651
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpableArea:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   moveSpeed: 7
   jumpForce: 14
   startTimeBtwAttack: 0
@@ -4057,7 +4057,7 @@ SpriteRenderer:
   m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1214429318
