@@ -11,8 +11,8 @@ TagManager:
   - Enemy
   - Water
   - UI
-  - 
-  - 
+  - ground
+  - chief
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Decorations 2
     uniqueID: 575008881
+    locked: 0
+  - name: textlayer
+    uniqueID: 4222747281
     locked: 0
