@@ -172,11 +172,11 @@ public class PlayerMovement : MonoBehaviour
         
         
 
-        if (transform.position.y < -10)
+        /*if (transform.position.y < -10)
         {
             gameOver();
 
-        }
+        }*/
 
         
         
