@@ -2003,7 +2003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &375853265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6897,9 +6897,9 @@ MonoBehaviour:
   - HELP! HELP! the village is being attacked by BISHOP CORP
   - PLEASE GO BACK TO THE VILLAGE!
   - YOUR FAMILY AND EVERYONE ELSE NEEDS YOU!
-  - Don't worry I'll tell you everything you need too on the way there.
+  - Don't worry I'll tell you everything you need to know on the way there.
   - LETS GO!!!
-  wordSpeed: 0.03
+  wordSpeed: 0.02
   firstTime: 1
 --- !u!70 &1451559612
 CapsuleCollider2D:
@@ -37367,7 +37367,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.27
-  m_Text: New Text
+  m_Text: Continue
 --- !u!222 &1999030421
 CanvasRenderer:
   m_ObjectHideFlags: 0
