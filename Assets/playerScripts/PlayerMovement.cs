@@ -171,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
         
         
 
-        if (transform.position.y < -4)
+        if (transform.position.y < -14)
         {
             gameOver();
 
@@ -266,13 +266,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void gameOver()
     {
-        GameOverScreen.Setup();
+        //GameOverScreen.Setup();
         //_t2 = new Thread(_func2);
        //_t2.Start();
-       //_t2.Abort();
-      // our_controller.Close();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
+        _t2.Abort();
+        our_controller.Close();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameOverScreen.Setup();
 
     }
 
