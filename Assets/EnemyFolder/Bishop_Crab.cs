@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bishop_Crab : MonoBehaviour
 {
     public Animator animator;
-    public int maxHealth = 100;
+    public int maxHealth = 500;
     int currentHealth;
 
     void Start()
@@ -39,7 +39,7 @@ public class Bishop_Crab : MonoBehaviour
 
         GetComponent<BoxCollider2D>().enabled = false;
         //GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Animator>().enabled = false;
+        //GetComponent<Animator>().enabled = false;
         GetComponent<Crab_AI>().enabled = false;
         this.enabled= false;
     }
