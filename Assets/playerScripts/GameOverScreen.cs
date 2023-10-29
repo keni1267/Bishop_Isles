@@ -9,10 +9,21 @@ using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public void Setup()
+    public GameObject gameOverUI;
+
+    void Start()
     {
-        GameObject object0 = new GameObject();
-        object0.SetActive(true);
+
+    }
+
+    void Update()
+    {
+
+    }
+    public void gameOver()
+    {
+        //GameObject object0 = new GameObject();
+        gameOverUI.SetActive(true);
     }
 
     public void RestartButton()
