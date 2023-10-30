@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.IO.Ports;
 using System.Threading;
 using System;
+using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -41,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 100;
+
+    //public GameOverScreen GameOverScreen;
+    public GameManagerScript gameManager;
+    private bool isDead;
 
 
     [SerializeField] private AudioSource running_sound;
@@ -172,11 +177,15 @@ public class PlayerMovement : MonoBehaviour
         
         
 
-        /*if (transform.position.y < -10)
+        if (transform.position.y < -10 )
         {
-            gameOver();
+            //isDead(true);
+            //gameOver();
+            //gameObject.SetActive(false);
+            gameManager.gameOver();
+            Debug.Log("Dead");
 
-        }*/
+        }
 
         
         
@@ -284,12 +293,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void gameOver()
     {
+        //GameOverScreen.Setup();
         //_t2 = new Thread(_func2);
        //_t2.Start();
-       _t2.Abort();
-       our_controller.Close();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
+
+        //_t2.Abort();
+        //our_controller.Close();
+        gameManager.gameOver();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //gameManager.gameOver();
 
     }
 
