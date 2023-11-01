@@ -177,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (transform.position.y < -14)
+        if (transform.position.y < -20)
         {
             Debug.Log(transform.position.y);
             //isDead(true);
