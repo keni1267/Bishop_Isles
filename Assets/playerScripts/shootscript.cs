@@ -30,20 +30,20 @@ public class shootscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = mousePos - (Vector2)Spear.position;
-        FaceMouse();
+    //    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    direction = mousePos - (Vector2)Spear.position;
+    //    FaceMouse();
 
-        if (Input.GetMouseButton(1))
-        {
-            if(Time.time > ReadyForNextShot)
-            {
-                ReadyForNextShot = Time.time + 1 / fireRate;
-                shoot();
-            }
+    //    if (Input.GetMouseButton(1))
+    //    {
+    //        if(Time.time > ReadyForNextShot)
+    //        {
+    //            ReadyForNextShot = Time.time + 1 / fireRate;
+    //            shoot();
+    //        }
 
             
-        }
+    //    }
     }
 
     void FaceMouse()

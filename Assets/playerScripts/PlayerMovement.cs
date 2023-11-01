@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float dirX = 0f;
     private bool att = false;
-
+    bool fisherman_facing; //false for not flipped facing right //true for flipped facing left
     [SerializeField]
     private float moveSpeed = 7f;
     [SerializeField]
@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDead;
 
 
+
     [SerializeField] private AudioSource running_sound;
 
     //[SerializeField] private Transform characterTransform;
@@ -61,9 +62,21 @@ public class PlayerMovement : MonoBehaviour
         falling
     }
 
-    
 
-     void _func2(object obj)
+    public Transform Spear;
+
+    Vector2 direction;
+    public GameObject Projectile;
+
+    public float ProjectileSpeed;
+
+    public Transform ShootPoint;
+
+    public float fireRate;
+    float ReadyForNextShot;
+
+    bool from_keyboard = false;
+    void _func2(object obj)
     {
         //Debug.Log("IM HEREEE");
         connected =true;
@@ -80,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         {
             try{
             inData = our_controller.ReadLine();
-            if (inData.Length>3)
+            if (inData.Length>3 || inData.Length ==1)
             inData="6\n";
             }
             catch{Debug.Log("NO CONNECTOR");
@@ -91,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
+        
        _t2 = new Thread(_func2);
        _t2.Start();
 
@@ -99,77 +113,126 @@ public class PlayerMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         Debug.Log("RESTARTEEEEEED");
-
+        fisherman_facing = sprite.flipX;
 
 
     }
 
-    
+     
     private void Update()
     {
- 
+     //   Debug.Log(sprite.sprite.name);
+        if(sprite.sprite.name.Contains("Fisherman"))
+        {
+            if(sprite.flipX && sprite.flipX!= fisherman_facing)
+            {
+                //Spear.Rotate(0,0, 180);
+                fisherman_facing = sprite.flipX;
+                Debug.Log("ROTATED to TRUE");
+                direction = new Vector2(-1, 0);
+
+
+            }
+            if (!sprite.flipX && sprite.flipX != fisherman_facing)
+            {
+                //Spear.Rotate(0,0 , -180);
+                fisherman_facing = sprite.flipX;
+                Debug.Log("ROTATED to False");
+                direction = new Vector2(1, 0);
+
+
+            }
+
+
+        }
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        //direction = mousePos - (Vector2)Spear.position;
+      //  Debug.Log(direction);
+        FaceMouse();
+
+        
+
         int controller =int.Parse(inData); 
         //att = Input.GetKey(KeyCode.H);
 
-        bool something=false;
-        bool anotherthing=false;
+        bool rod_attack = false;
+        bool jump_controller=false;
+        bool spear_attack = false;
         //change int.Parse to compare to string in future
-        if( controller== 7)
-        {last_movement=7;
-            dirX = 1;
-            }
-        else if(controller == 6)
-        {last_movement=6;
-            dirX = 0;
-            }
-        else if(controller == 4)
-            {
-            dirX = 0;
-            last_movement=4;
-            }
-        else if(controller == 5)
+        if (controller == 7)
         {
-         last_movement=5;
+            last_movement = 7;
+            dirX = 1;
+        }
+        else if (controller == 6)
+        {
+            last_movement = 6;
+            dirX = 0;
+        }
+        else if (controller == 4)
+        {
+            dirX = 0;
+            last_movement = 4;
+        }
+        else if (controller == 5)
+        {
+            last_movement = 5;
             dirX = -1;
         }
-        else if(controller == 8)
-            something=true;
-        else if(controller == 9)
-            something=false;
-        else if(controller==2)
-        {
-            anotherthing=true;
+        else if (controller == 8)
+            rod_attack = true;
+        else if (controller == 9)
+            spear_attack = true;
+        else if (controller == 15)
+        { 
+            rod_attack = false;
+            spear_attack = false;
+
         }
-        else if(controller==3)
+        else if (controller == 2)
         {
-            anotherthing=false;
+            jump_controller = true;
+        }
+        else if (controller == 3)
+        {
+            jump_controller = false;
         }
         float dirX2 = Input.GetAxisRaw("Horizontal");
         
         if(dirX2!=0)
+        { 
             dirX = dirX2;
-
-       // Debug.log(dirX);
+            from_keyboard = true;
+            last_movement = 6;
+            inData = last_movement.ToString() + "\n";
+        }
+        else
+        { from_keyboard = false; }
+        // Debug.log(dirX);
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         
-        if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack)||(something && canAttack))
+        if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack)||(rod_attack && canAttack))
         {   
             attack();
-            inData=last_movement.ToString()+"\n";
-            canAttack = false;
-            something=false;
-            StartCoroutine(attackCoolDown());
             
+            canAttack = false;
+            rod_attack = false;
+            StartCoroutine(attackCoolDown());
+            if(!from_keyboard)
+            inData = last_movement.ToString() + "\n";
+
         }
         
-        if ((Input.GetKeyDown(KeyCode.Space) && isGrounded()/*anotherthing*/) /*&& isGrounded()*/) { 
+        if (((Input.GetKeyDown(KeyCode.Space)|| jump_controller) && isGrounded()/*anotherthing*/) /*&& isGrounded()*/) { 
    
             rb.velocity = new Vector2(rb.velocity.x, 12f);
             
             Debug.Log("HEEEYYYY");
-            inData=last_movement.ToString()+"\n";
+            if (!from_keyboard)
+                inData =last_movement.ToString()+"\n";
             Debug.Log(inData);
-            anotherthing=false;
+            jump_controller = false;
             
 
             //Debug.Log(KeyCode.Space);
@@ -183,13 +246,25 @@ public class PlayerMovement : MonoBehaviour
             //isDead(true);
             //gameOver();
             //gameObject.SetActive(false);
-            gameManager.gameOver();
+         //   gameManager.gameOver();
             Debug.Log("Dead");
 
         }
 
 
 
+        if (Input.GetMouseButton(1) || spear_attack)
+        {
+            if (Time.time > ReadyForNextShot)
+            {
+                if (!from_keyboard)
+                    inData = last_movement.ToString() + "\n";
+                ReadyForNextShot = Time.time + 1 / fireRate;
+                shoot();
+            }
+
+
+        }
 
         UpdateAnimationState();
 
@@ -305,5 +380,17 @@ public class PlayerMovement : MonoBehaviour
         //gameManager.gameOver();
 
     }
+    void FaceMouse()
+    {
+        Spear.transform.right = direction;
 
+    }
+    void shoot()
+    {
+        GameObject spearIns = Instantiate(Projectile, ShootPoint.position, ShootPoint.rotation);
+        spearIns.GetComponent<Rigidbody2D>().AddForce(spearIns.transform.right * ProjectileSpeed);
+
+
+        Destroy(spearIns, 2);
+    }
 }
