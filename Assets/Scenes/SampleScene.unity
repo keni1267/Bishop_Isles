@@ -33574,7 +33574,7 @@ MonoBehaviour:
   diaPanel: {fileID: 590774455}
   button: {fileID: 341078121}
   dialogue:
-  - HELP! HELP! the village is being attacked by BISHOP CORP
+  - ' HELP! the village is being attacked by BISHOP CORP'
   - PLEASE GO BACK TO THE VILLAGE!
   - YOUR FAMILY AND EVERYONE ELSE NEEDS YOU!
   - Don't worry I'll tell you everything you need to know on the way there.
