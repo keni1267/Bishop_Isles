@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float dirX = 0f;
     private bool att = false;
+    public bool canMove;
 
     [SerializeField]
     private float moveSpeed = 7f;
@@ -93,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
     {
        _t2 = new Thread(_func2);
        _t2.Start();
-
+        canMove = true;
         CC = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();

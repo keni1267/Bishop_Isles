@@ -129,7 +129,7 @@ public class textScript : MonoBehaviour
         if (firstTime == true)
         {
             this.enabled= false;
-            StartCoroutine(ExecuteAfterDelay(16f));
+            StartCoroutine(ExecuteAfterDelay(20f));
             firstTime= false;
 
         }

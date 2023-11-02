@@ -17598,6 +17598,7 @@ MonoBehaviour:
   jumpableArea:
     serializedVersion: 2
     m_Bits: 64
+  canMove: 0
   moveSpeed: 7
   jumpForce: 14
   startTimeBtwAttack: 0
@@ -33579,6 +33580,7 @@ MonoBehaviour:
   - YOUR FAMILY AND EVERYONE ELSE NEEDS YOU!
   - Don't worry I'll tell you everything you need to know on the way there.
   - LETS GO!!!
+  - First... use your left and right arrows to move left and right.
   wordSpeed: 0.02
   firstTime: 1
 --- !u!70 &1451559612
