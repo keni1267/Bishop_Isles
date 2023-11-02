@@ -9,6 +9,9 @@ public class Crab_AI : MonoBehaviour
     public float lineOfSite;
     public float attackRange;
     public float timer; //attack cooldown
+    public player_health playerHealth;   //accesing script needed for player damage
+    public int damage;
+
     #endregion
     
 
@@ -21,6 +24,8 @@ public class Crab_AI : MonoBehaviour
     private bool attackMode;
     private bool cooling;
     private float intTimer;
+    private bool hasAttacked = false; //so it only gets damage once
+
     #endregion
 
 
@@ -34,6 +39,8 @@ public class Crab_AI : MonoBehaviour
     {
         transform.position = waypoints[waypointIndex].transform.position;   //position between waypoints
         player = GameObject.FindGameObjectWithTag("Player").transform;  //fisherman has tag player
+        playerHealth = player.GetComponent<player_health>(); //gets player health from player object
+      
     }
 
     void Update()
@@ -42,17 +49,18 @@ public class Crab_AI : MonoBehaviour
         if (distance_from_player < lineOfSite && distance_from_player > attackRange)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position,attack_speed*Time.deltaTime);  //moves towards player
-           // StopAttack();
-
+            if(hasAttacked == false){
+                Attack();
+                hasAttacked = true;
+            }
         }
-        else if(distance_from_player <= attackRange && cooling == false){
+        else if(distance_from_player <= attackRange && cooling == false && hasAttacked == false){
             Attack();
-
+            hasAttacked = true;
         }
        if(cooling){
             Cooldown();
-             anim.SetBool("Attack",false);
-
+            anim.SetBool("Attack",false);
         }
         else{
             Patrol();     //stable move
@@ -80,23 +88,24 @@ public class Crab_AI : MonoBehaviour
     void Attack(){
         timer = intTimer;       //reset timer when player in attack range
         attackMode = true;
-        anim.SetBool("Attack",true);
+       // anim.SetBool("Attack",true);
+        GetComponent<Animator>().SetTrigger("Attack"); // same as anim.SetBool("Attack", true) but it doesnt glitch as much
 
+        if (attackMode && playerHealth != null)
+           playerHealth.Damage(damage);
+        
+    
     }
     void Cooldown(){
         timer -= Time.deltaTime;
         if(timer <= 0 && cooling && attackMode){
             cooling = false;
             timer = intTimer;
+            hasAttacked = false;
         }
+    }
 
-    }
-    void StopAttack(){
-        cooling = false;
-        attackMode = false;
-        anim.SetBool("Attack",false);
-    }
-    public void TriggerCooling(){
+   public void TriggerCooling(){
         cooling = true;
     }
 }
