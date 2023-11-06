@@ -13,13 +13,19 @@ public class GameManagerScript : MonoBehaviour
     public GameObject pauseMenuScreen;
     void Start()
     {
+<<<<<<< HEAD
         // Cursor.visible = false;
         // Cursor.lockState = CursorLockMode.Locked;
+=======
+        /*Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;*/
+>>>>>>> 4afdf7baf213cb71333b03b63b083b642a22b8ee
     }
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         // if(gameOverUI.activeInHierarchy)
         // {
         //     Cursor.visible = true;
@@ -30,6 +36,18 @@ public class GameManagerScript : MonoBehaviour
         //     Cursor.visible = false;
         //     Cursor.lockState = CursorLockMode.Locked;
         // }
+=======
+        if (gameOverUI.activeInHierarchy)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            /*Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;*/
+        }
+>>>>>>> 4afdf7baf213cb71333b03b63b083b642a22b8ee
     }
     public void gameOver()
     {
