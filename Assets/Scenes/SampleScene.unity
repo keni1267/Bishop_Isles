@@ -17612,6 +17612,11 @@ MonoBehaviour:
   attackDamage: 34
   gameManager: {fileID: 364780447}
   running_sound: {fileID: 171523578}
+  Spear: {fileID: 1876257461}
+  Projectile: {fileID: 7281269618168298615, guid: 90337a56ce3509442b579b00f5ce0245, type: 3}
+  ProjectileSpeed: 1000
+  ShootPoint: {fileID: 640023293}
+  fireRate: 1
 --- !u!95 &171523576
 Animator:
   serializedVersion: 5
