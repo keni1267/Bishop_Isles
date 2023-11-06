@@ -10,25 +10,26 @@ using UnityEngine.UI;
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject gameOverUI;
+    public GameObject pauseMenuScreen;
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameOverUI.activeInHierarchy)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        // if(gameOverUI.activeInHierarchy)
+        // {
+        //     Cursor.visible = true;
+        //     Cursor.lockState = CursorLockMode.None;
+        // }
+        // else
+        // {
+        //     Cursor.visible = false;
+        //     Cursor.lockState = CursorLockMode.Locked;
+        // }
     }
     public void gameOver()
     {
@@ -52,5 +53,17 @@ public class GameManagerScript : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit");
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseMenuScreen.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        pauseMenuScreen.SetActive(false);
     }
 }
