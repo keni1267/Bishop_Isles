@@ -17,6 +17,7 @@ public class textScript : MonoBehaviour {
     public bool firstTime = true;
     void Update()
     {
+        this.enabled = false;
         if (firstTime == true)
         {
             this.enabled= false;
