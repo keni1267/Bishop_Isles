@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 7f;
     [SerializeField]
-    private float jumpForce = 14f;
+    private float jumpForce = 30f;
 
     private SpriteRenderer sprite;
 
