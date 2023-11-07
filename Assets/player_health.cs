@@ -11,7 +11,8 @@ public class player_health : MonoBehaviour
     public float max_health;
     public Image HealthBar;
 
-  
+    public GameManagerScript gameManager;
+    
 
 
     void Start()
@@ -31,6 +32,8 @@ public class player_health : MonoBehaviour
         }
          if(health <= 0){
             Destroy(gameObject);
+            //gameManager.gameOver();
+            //SceneManager.LoadScene("GameOverScreen");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
          }
 
