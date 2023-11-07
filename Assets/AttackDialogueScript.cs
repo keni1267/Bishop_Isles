@@ -27,7 +27,7 @@ public class AttackDialogueScript : MonoBehaviour {
             StartConversation();
         }
 
-        if (index == 1) {
+        if (index == 2) {
             this.enabled = false;
             //firstTime = true;
         }

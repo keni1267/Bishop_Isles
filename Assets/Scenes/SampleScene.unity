@@ -35575,7 +35575,7 @@ MonoBehaviour:
   diaPanel: {fileID: 590774455}
   button: {fileID: 341078121}
   dialogue:
-  - Help! My family is in danger! The Bishop CORP is under attack!
+  - Help! My family is in danger! The Bishop CORP is attacking the village!
   - I can show you the way if you follow me ...
   - Use the left/right arrows to move left and right.
   - Your health bar will show your health.
@@ -36732,8 +36732,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577486976}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.930054, y: -8.51001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 11.930054, y: -8, z: 0}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -37479,6 +37479,7 @@ MonoBehaviour:
   - '!!!'
   - Watch out! There are Bishop Crabs! They'll do damage to you. LEFT CLICK to use
     your fishing rod to attack.
+  - RIGHT click to attack with your spear.
   wordSpeed: 0.02
   firstTime: 1
 --- !u!61 &1729979939
@@ -37516,7 +37517,7 @@ Transform:
   m_GameObject: {fileID: 1729979937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 35.322, y: -7.8381, z: 0}
-  m_LocalScale: {x: 4.744092, y: 3.6838806, z: 1}
+  m_LocalScale: {x: 4.744092, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
