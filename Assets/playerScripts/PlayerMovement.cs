@@ -50,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private AudioSource running_sound;
+    public float health;
+    public float max_health;
+    public Image HealthBar;
+
 
     //[SerializeField] private Transform characterTransform;
 
@@ -108,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
     private void Start()
-    {
+    {max_health = health;
         our_controller.Close();
 
         _t2 = new Thread(_func2);
@@ -127,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        HealthBar.fillAmount = Mathf.Clamp(health / max_health, 0 ,1);
         //   Debug.Log(sprite.sprite.name);
         if (sprite.sprite.name.Contains("Fisherman"))
         {
@@ -246,7 +251,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (transform.position.y < -14.5)
+        if (transform.position.y < -14.5 &&transform.position.y>-15)
         {
             Debug.Log(transform.position.y);
             //isDead(true);
@@ -400,5 +405,18 @@ public class PlayerMovement : MonoBehaviour
 
 
         Destroy(spearIns, (float)0.3);
+    }
+        public void Damage(int amount){
+        if(health > 0){
+            health -= amount;                
+            Debug.Log(health);
+        }
+         if(health <= 0){
+            gameOver();
+            //gameManager.gameOver();
+            SceneManager.LoadScene("GameOverScreen");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+         }
+
     }
 }

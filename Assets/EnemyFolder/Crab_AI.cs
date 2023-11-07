@@ -9,7 +9,7 @@ public class Crab_AI : MonoBehaviour
     public float lineOfSite;
     public float attackRange;
     public float timer; //attack cooldown
-    public player_health playerHealth;   //accesing script needed for player damage
+    public PlayerMovement playerHealth;   //accesing script needed for player damage
     public int damage;
 
     #endregion
@@ -39,7 +39,7 @@ public class Crab_AI : MonoBehaviour
     {
         transform.position = waypoints[waypointIndex].transform.position;   //position between waypoints
         player = GameObject.FindGameObjectWithTag("Player").transform;  //fisherman has tag player
-        playerHealth = player.GetComponent<player_health>(); //gets player health from player object
+        playerHealth = player.GetComponent<PlayerMovement>(); //gets player health from player object
       
     }
 
