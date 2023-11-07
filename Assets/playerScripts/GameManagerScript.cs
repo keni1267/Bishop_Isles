@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject gameOverUI;
+    public GameObject pauseMenuScreen;
     void Start()
     {
         /*Cursor.visible = false;
@@ -52,5 +53,17 @@ public class GameManagerScript : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit");
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseMenuScreen.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        pauseMenuScreen.SetActive(false);
     }
 }

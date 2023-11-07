@@ -28,6 +28,7 @@ public class Bishop_Crab : MonoBehaviour
 
         }
     }
+    
 
     void Die()
     {
