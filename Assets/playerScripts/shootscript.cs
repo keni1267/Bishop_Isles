@@ -57,6 +57,6 @@ public class shootscript : MonoBehaviour
         spearIns.GetComponent<Rigidbody2D>().AddForce(spearIns.transform.right * ProjectileSpeed);
         
        
-        Destroy(spearIns, 2);
+        Destroy(spearIns, (float)0.3);
     }
 }

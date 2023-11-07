@@ -26,7 +26,7 @@ public class projectileDmg : MonoBehaviour
         if (col.gameObject.tag.Equals("Projectile"))
         {
 
-           GetComponent<Bishop_Crab>().TakeDamage(50);
+           GetComponent<Bishop_Crab>().TakeDamage(200);
         }
     }
 }

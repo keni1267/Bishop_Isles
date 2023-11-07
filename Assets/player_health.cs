@@ -33,8 +33,8 @@ public class player_health : MonoBehaviour
          if(health <= 0){
             Destroy(gameObject);
             //gameManager.gameOver();
-            //SceneManager.LoadScene("GameOverScreen");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene("GameOverScreen");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
          }
 
     }

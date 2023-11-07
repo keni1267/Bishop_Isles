@@ -17823,7 +17823,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   moveSpeed: 7
-  jumpForce: 14
+  jumpForce: 100
   startTimeBtwAttack: 0
   animator: {fileID: 171523576}
   attackPoint: {fileID: 573574610}
@@ -27014,16 +27014,16 @@ RectTransform:
   m_GameObject: {fileID: 220341571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2842864, y: 0.07254465, z: 1}
+  m_LocalScale: {x: 0.27198237, y: 0.04712646, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1410280424}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -401.2, y: 182.5}
-  m_SizeDelta: {x: -246, y: -41}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 564, y: -88}
+  m_SizeDelta: {x: 3594, y: 2119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220341573
 MonoBehaviour:
@@ -31567,8 +31567,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   attack_speed: 7
-  lineOfSite: 2.74
-  attackRange: 1.19
+  lineOfSite: 2
+  attackRange: 1
   timer: 3
   playerHealth: {fileID: 171523582}
   damage: 15
@@ -34496,7 +34496,7 @@ RectTransform:
   m_GameObject: {fileID: 1325343922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.6923497, y: 0.41257, z: 1}
+  m_LocalScale: {x: 10.1721735, y: 1.2950195, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1410280424}
@@ -34504,7 +34504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 173.2, y: -49}
+  m_AnchoredPosition: {x: 562.5, y: -89.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325343924

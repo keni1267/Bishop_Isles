@@ -27,14 +27,14 @@ public class PlayerMovement : MonoBehaviour
     public float startTimeBtwAttack;
 
     Thread _t2;
-    bool connected =false;
-    string inData="6\n";
-    int last_movement=0;
-    public static SerialPort our_controller = new SerialPort("/dev/cu.usbserial-0001",115200);
+    bool connected = false;
+    string inData = "6\n";
+    int last_movement = 0;
+    public static SerialPort our_controller = new SerialPort("/dev/cu.usbserial-0001", 115200);
 
 
     //attack
-     private float attackCooldown = 1.0f;
+    private float attackCooldown = 1.0f;
     private bool canAttack = true;
 
     public Animator animator;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 100;
-
+    bool jump_controller = false;
     //public GameOverScreen GameOverScreen;
     public GameManagerScript gameManager;
     private bool isDead;
@@ -79,34 +79,40 @@ public class PlayerMovement : MonoBehaviour
     void _func2(object obj)
     {
         //Debug.Log("IM HEREEE");
-        connected =true;
-        try{
-        our_controller.Open();
+        connected = true;
+        try
+        {
+            our_controller.Open();
         }
         catch
         {
             Debug.Log("NO CONNECTOR");
-            connected=false;
+            connected = false;
         }
-        if(connected)
-        while (true)
-        {
-            try{
-            inData = our_controller.ReadLine();
-            if (inData.Length>3 || inData.Length ==1)
-            inData="6\n";
+        if (connected)
+            while (true)
+            {
+                try
+                {
+                    inData = our_controller.ReadLine();
+                    if (inData.Length > 3 || inData.Length == 1)
+                        inData = "6\n";
+                }
+                catch
+                {
+                    Debug.Log("NO CONNECTOR");
+                    break;
+                }
+                Debug.Log(inData);
             }
-            catch{Debug.Log("NO CONNECTOR");
-            break;}
-            Debug.Log(inData);
-        }
 
     }
     private void Start()
     {
-        
-       _t2 = new Thread(_func2);
-       _t2.Start();
+        our_controller.Close();
+
+        _t2 = new Thread(_func2);
+        _t2.Start();
         //canMove = true;
         CC = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -118,13 +124,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-     
+
     private void Update()
     {
-     //   Debug.Log(sprite.sprite.name);
-        if(sprite.sprite.name.Contains("Fisherman"))
+        //   Debug.Log(sprite.sprite.name);
+        if (sprite.sprite.name.Contains("Fisherman"))
         {
-            if(sprite.flipX && sprite.flipX!= fisherman_facing)
+            if (sprite.flipX && sprite.flipX != fisherman_facing)
             {
                 //Spear.Rotate(0,0, 180);
                 fisherman_facing = sprite.flipX;
@@ -146,18 +152,18 @@ public class PlayerMovement : MonoBehaviour
 
         }
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
+
         //direction = mousePos - (Vector2)Spear.position;
-      //  Debug.Log(direction);
+        //  Debug.Log(direction);
         FaceMouse();
 
-        
 
-        int controller =int.Parse(inData); 
+
+        int controller = int.Parse(inData);
         //att = Input.GetKey(KeyCode.H);
 
         bool rod_attack = false;
-        bool jump_controller=false;
+        
         bool spear_attack = false;
         //change int.Parse to compare to string in future
         if (controller == 7)
@@ -185,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
         else if (controller == 9)
             spear_attack = true;
         else if (controller == 15)
-        { 
+        {
             rod_attack = false;
             spear_attack = false;
 
@@ -199,9 +205,9 @@ public class PlayerMovement : MonoBehaviour
             jump_controller = false;
         }
         float dirX2 = Input.GetAxisRaw("Horizontal");
-        
-        if(dirX2!=0)
-        { 
+
+        if (dirX2 != 0)
+        {
             dirX = dirX2;
             from_keyboard = true;
             last_movement = 6;
@@ -211,42 +217,44 @@ public class PlayerMovement : MonoBehaviour
         { from_keyboard = false; }
         // Debug.log(dirX);
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-        
-        if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack)||(rod_attack && canAttack))
-        {   
+
+        if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack) || (rod_attack && canAttack))
+        {
             attack();
-            
+
             canAttack = false;
             rod_attack = false;
             StartCoroutine(attackCoolDown());
-            if(!from_keyboard)
-            inData = last_movement.ToString() + "\n";
+            if (!from_keyboard)
+                inData = last_movement.ToString() + "\n";
 
         }
-        
-        if (((Input.GetKeyDown(KeyCode.Space)|| jump_controller) && isGrounded()/*anotherthing*/) /*&& isGrounded()*/) { 
-   
+
+        if (((Input.GetKeyDown(KeyCode.Space) || jump_controller) && isGrounded()/*anotherthing*/) /*&& isGrounded()*/)
+        {
+
             rb.velocity = new Vector2(rb.velocity.x, 12f);
-            
+
             Debug.Log("HEEEYYYY");
             if (!from_keyboard)
-                inData =last_movement.ToString()+"\n";
+                inData = last_movement.ToString() + "\n";
             Debug.Log(inData);
             jump_controller = false;
-            
+
 
             //Debug.Log(KeyCode.Space);
         }
 
 
-
-        if (transform.position.y < -14)
+        if (transform.position.y < -14.5)
         {
             Debug.Log(transform.position.y);
             //isDead(true);
-            //gameOver();
+            gameOver();
             //gameObject.SetActive(false);
-         //   gameManager.gameOver();
+            our_controller.Close();
+            _t2.Abort();
+            gameManager.gameOver();
             Debug.Log("Dead");
 
         }
@@ -272,18 +280,18 @@ public class PlayerMovement : MonoBehaviour
     void attack()
     {
         animator.SetTrigger("Attack");
-        
-        Collider2D[] hitEnemies  = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         //Collider2D[] hitEnemies  = Physics2D.OverlapBoxAll(attackPoint.position, new Vector2(X,Y), enemyLayers);
 
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            
-          enemy.GetComponent<Bishop_Crab>().TakeDamage(attackDamage);
+
+            enemy.GetComponent<Bishop_Crab>().TakeDamage(attackDamage);
         }
-        
-          
+
+
     }
 
     IEnumerator attackCoolDown()
@@ -295,7 +303,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (attackPoint== null)
+        if (attackPoint == null)
         {
             return;
         }
@@ -305,17 +313,17 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateAnimationState()
     {
         MovementState state;
-        if (dirX > 0f )
+        if (dirX > 0f)
         {
-            
+
             state = MovementState.running;
-            if(!running_sound.isPlaying)
+            if (!running_sound.isPlaying)
             {
                 running_sound.Play();
             }
             //characterTransform.localScale = new Vector3(1f, 1f, 1f);
             sprite.flipX = false;
-            
+
 
         }
         else if (dirX < 0f)
@@ -329,7 +337,7 @@ public class PlayerMovement : MonoBehaviour
             }
             //characterTransform.localScale = new Vector3(-1f, 1f, 1f);
             sprite.flipX = true;
-            
+
 
         }
         else
@@ -340,7 +348,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (rb.velocity.y > .1f) 
+        if (rb.velocity.y > .1f)
         {
             state = MovementState.jumping;
 
@@ -349,14 +357,14 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.falling;
         }
-      
+
         anim.SetInteger("state", (int)state);
-        
-
-     
 
 
-            
+
+
+
+
 
     }
 
@@ -371,7 +379,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //GameOverScreen.Setup();
         //_t2 = new Thread(_func2);
-       //_t2.Start();
+        //_t2.Start();
 
         //_t2.Abort();
         //our_controller.Close();
@@ -391,6 +399,6 @@ public class PlayerMovement : MonoBehaviour
         spearIns.GetComponent<Rigidbody2D>().AddForce(spearIns.transform.right * ProjectileSpeed);
 
 
-        Destroy(spearIns, 2);
+        Destroy(spearIns, (float)0.3);
     }
 }
