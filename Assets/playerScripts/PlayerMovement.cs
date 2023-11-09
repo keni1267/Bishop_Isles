@@ -59,7 +59,8 @@ public class PlayerMovement : MonoBehaviour
         running,
         attacking,
         jumping,
-        falling
+        falling,
+        spear_attack
     }
 
 
@@ -258,6 +259,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Dead");
 
         }
+        float delay = 15000f;
+        float timer = 0f;
 
 
 
@@ -265,10 +268,17 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Time.time > ReadyForNextShot)
             {
+                animator.SetTrigger("spear");
                 if (!from_keyboard)
                     inData = last_movement.ToString() + "\n";
                 ReadyForNextShot = Time.time + 1 / fireRate;
-                shoot();
+                /*while(timer < delay)
+                {
+                    timer += Time.deltaTime;
+                    //yield return null;
+                }*/
+                //shoot();
+                StartCoroutine(ShootAfterDelay(.25f));
             }
 
 
@@ -395,10 +405,22 @@ public class PlayerMovement : MonoBehaviour
     }
     void shoot()
     {
+        
         GameObject spearIns = Instantiate(Projectile, ShootPoint.position, ShootPoint.rotation);
         spearIns.GetComponent<Rigidbody2D>().AddForce(spearIns.transform.right * ProjectileSpeed);
-
+        
 
         Destroy(spearIns, (float)0.3);
+    }
+
+    IEnumerator ShootAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        GameObject spearIns = Instantiate(Projectile, ShootPoint.position, ShootPoint.rotation);
+        spearIns.GetComponent<Rigidbody2D>().AddForce(spearIns.transform.right * ProjectileSpeed);
+        
+
+        Destroy(spearIns, 0.3f);
     }
 }
