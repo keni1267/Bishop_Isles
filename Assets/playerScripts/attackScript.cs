@@ -43,18 +43,18 @@ public class attackScript : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
-        {   
+        {
             attack();
             canAttack = false;
             StartCoroutine(attackCoolDown());
-            
-        }
-            
 
-        
-        
-        
-        
+        }
+
+
+
+
+
+
     }
     void attack()
     {

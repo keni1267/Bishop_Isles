@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private AudioSource running_sound;
+    [SerializeField] private AudioSource rod_attack_sound;
 
     //[SerializeField] private Transform characterTransform;
 
@@ -221,6 +222,12 @@ public class PlayerMovement : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack) || (rod_attack && canAttack))
         {
+            if(!rod_attack_sound.isPlaying)
+            {
+                rod_attack_sound.Play();
+                //rod_attack_sound.Stop();
+            }
+     
             attack();
 
             canAttack = false;
@@ -259,8 +266,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Dead");
 
         }
-        float delay = 15000f;
-        float timer = 0f;
+        
 
 
 

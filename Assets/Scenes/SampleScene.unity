@@ -17478,7 +17478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!320 &133727165
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -17509,6 +17509,8 @@ PlayableDirector:
   - key: {fileID: 4640326700246919339, guid: 729f9a667c5d79e4399c40f76be81e58, type: 2}
     value: {fileID: 1451559606}
   - key: {fileID: 444999857293867165, guid: 729f9a667c5d79e4399c40f76be81e58, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7230151140393005765, guid: 729f9a667c5d79e4399c40f76be81e58, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -17689,10 +17691,11 @@ GameObject:
   - component: {fileID: 171523576}
   - component: {fileID: 171523582}
   - component: {fileID: 171523577}
-  - component: {fileID: 171523578}
   - component: {fileID: 171523579}
   - component: {fileID: 171523580}
   - component: {fileID: 171523581}
+  - component: {fileID: 171523583}
+  - component: {fileID: 171523584}
   m_Layer: 0
   m_Name: Fisherman
   m_TagString: Player
@@ -17743,7 +17746,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4deb5b5f194687e4ea8914100d30f3a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -17833,7 +17836,8 @@ MonoBehaviour:
     m_Bits: 8
   attackDamage: 34
   gameManager: {fileID: 364780447}
-  running_sound: {fileID: 171523578}
+  running_sound: {fileID: 171523583}
+  rod_attack_sound: {fileID: 171523584}
   Spear: {fileID: 1876257461}
   Projectile: {fileID: 7281269618168298615, guid: 90337a56ce3509442b579b00f5ce0245, type: 3}
   ProjectileSpeed: 1000
@@ -17880,7 +17884,80 @@ MonoBehaviour:
     m_Bits: 8
   attackDamage: 50
   dirX: 0
---- !u!82 &171523578
+--- !u!114 &171523579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171523570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045b1281fbbb62c409163e8f4b767666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirx: 0
+  fishermen: {fileID: 171523570}
+--- !u!61 &171523580
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171523570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.03, y: 0.7}
+  m_EdgeRadius: 0
+--- !u!114 &171523581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171523570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ae6c67235e80b47b9ab629ce49ca1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spear: {fileID: 278649199}
+  Projectile: {fileID: 7281269618168298615, guid: 90337a56ce3509442b579b00f5ce0245, type: 3}
+  ProjectileSpeed: 1000
+  ShootPoint: {fileID: 640023293}
+  fireRate: 0.5
+--- !u!114 &171523582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171523570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a268975d5a144ae45a9310676b61165b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  max_health: 0
+  HealthBar: {fileID: 220341573}
+  gameManager: {fileID: 0}
+--- !u!82 &171523583
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17900,7 +17977,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.5579982
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -17976,79 +18053,102 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &171523579
-MonoBehaviour:
+--- !u!82 &171523584
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171523570}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045b1281fbbb62c409163e8f4b767666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dirx: 0
-  fishermen: {fileID: 171523570}
---- !u!61 &171523580
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171523570}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.03, y: 0.7}
-  m_EdgeRadius: 0
---- !u!114 &171523581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171523570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ae6c67235e80b47b9ab629ce49ca1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Spear: {fileID: 278649199}
-  Projectile: {fileID: 7281269618168298615, guid: 90337a56ce3509442b579b00f5ce0245, type: 3}
-  ProjectileSpeed: 1000
-  ShootPoint: {fileID: 640023293}
-  fireRate: 0.5
---- !u!114 &171523582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171523570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a268975d5a144ae45a9310676b61165b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  max_health: 0
-  HealthBar: {fileID: 220341573}
-  gameManager: {fileID: 0}
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4a875cb84cf22ab48aefdc4ea0a97205, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &173455199
 GameObject:
   m_ObjectHideFlags: 0
