@@ -224,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &35211809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24349,7 +24349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!320 &133727165
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -24407,7 +24407,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133727164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f7f2784f44d9304e985ba5962f8dc7a, type: 3}
   m_Name: 
@@ -35003,7 +35003,7 @@ GameObject:
   - component: {fileID: 327026114}
   - component: {fileID: 327026117}
   - component: {fileID: 327026116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FishingDockIntro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37259,7 +37259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553111133}
   - component: {fileID: 553111134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock_Pillar_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40451,7 +40451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1132518760}
   - component: {fileID: 1132518761}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fishing_Dock_Pillar_Bottom (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41866,7 +41866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1410280421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44089,7 +44089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1586111500
 RectTransform:
   m_ObjectHideFlags: 0

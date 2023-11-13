@@ -44,7 +44,7 @@ public class textScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         this.enabled = true;
         // Code to execute after the delay
-        Debug.Log("10 seconds have passed!");
+        Debug.Log("500 seconds have passed!");
     }
 
     void StartConversation()

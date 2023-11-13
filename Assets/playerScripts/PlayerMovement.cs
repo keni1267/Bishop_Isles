@@ -256,14 +256,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < -14.5)
         {
-            Debug.Log(transform.position.y);
+            //Debug.Log(transform.position.y);
             //isDead(true);
-            gameOver();
+            
             //gameObject.SetActive(false);
+            
+            /*gameOver();
+
+
             our_controller.Close();
             _t2.Abort();
             gameManager.gameOver();
-            Debug.Log("Dead");
+            Debug.Log("Dead");*/
 
         }
         
