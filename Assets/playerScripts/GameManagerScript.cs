@@ -39,7 +39,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("gameScene");
         Debug.Log("Restart");
     }
 

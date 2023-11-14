@@ -18,7 +18,7 @@ public class AttackDialogueScript : MonoBehaviour {
     void Update() {
         if (firstTime == true) {
             this.enabled = false;
-            StartCoroutine(ExecuteAfterDelay(16f));
+            StartCoroutine(ExecuteAfterDelay(1f));
             firstTime = false;
 
         }
