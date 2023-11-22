@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,7 +130,10 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -18, y: -25}
-        - {x: 2, y: -2}
+        - {x: -7, y: -13}
+        - {x: 3, y: -2}
+        - {x: 12, y: 5}
+        - {x: 19, y: 11}
         - {x: 25, y: 16}
         - {x: 25, y: -25}
       tessellationDetail: 0
