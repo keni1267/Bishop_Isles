@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     string inData = "6\n";
     int last_movement = 0;
     public static SerialPort our_controller = new SerialPort("/dev/cu.usbserial-0001", 115200);
+    Renderer rend;
+    Color c;
 
 
     //attack
@@ -45,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
     bool jump_controller = false;
     //public GameOverScreen GameOverScreen;
     public GameManagerScript gameManager;
+    public Healthpickup pickup;
+    public player_health playerH;
     private bool isDead;
 
 
@@ -122,6 +126,9 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         Debug.Log("RESTARTEEEEEED");
         fisherman_facing = sprite.flipX;
+
+        rend = GetComponent<Renderer>();
+        c = rend.material.color; 
 
 
     }
@@ -254,7 +261,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (transform.position.y < -15.5)
+        if (transform.position.y < -12)
         {
             Debug.Log(transform.position.y);
             //isDead(true);
@@ -403,6 +410,29 @@ public class PlayerMovement : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //gameManager.gameOver();
 
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        //Debug.Log("Trigger");
+        //pickup.HealthRestoree();
+        if(collider.gameObject.tag == "Cloak")
+        {
+            Debug.Log("cloak");
+            Destroy(collider.gameObject);
+            StartCoroutine("GetInvisible");
+            //pickup.HealthRestoree();
+        }
+    }
+
+    IEnumerator GetInvisible()
+    {
+        Physics2D.IgnoreLayerCollision (0,3,true);
+        c.a = 0.5f;
+        rend.material.color = c;
+        yield return new WaitForSeconds(20f);
+        Physics2D.IgnoreLayerCollision (0,3,false);
+        c.a = 1f;
+        rend.material.color = c;
     }
     void FaceMouse()
     {
