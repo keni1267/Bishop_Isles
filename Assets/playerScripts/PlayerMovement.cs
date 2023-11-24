@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private AudioSource running_sound;
     [SerializeField] private AudioSource rod_attack_sound;
+    [SerializeField] private AudioSource spear_attack_sound;
 
     //[SerializeField] private Transform characterTransform;
 
@@ -282,6 +283,11 @@ public class PlayerMovement : MonoBehaviour
             if (Time.time > ReadyForNextShot)
             {
                 animator.SetTrigger("spear");
+                if (!spear_attack_sound.isPlaying)
+                {
+                    spear_attack_sound.Play();
+                    //rod_attack_sound.Stop();
+                }
                 if (!from_keyboard)
                     inData = last_movement.ToString() + "\n";
                 ReadyForNextShot = Time.time + 1 / fireRate;
