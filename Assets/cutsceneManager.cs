@@ -20,7 +20,7 @@ public class cutsceneManager : MonoBehaviour
          }
      }*/
     private PlayableDirector playableDirector;
-
+    
     void Start()
     {
         playableDirector = GetComponent<PlayableDirector>();
