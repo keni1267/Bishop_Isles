@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c1139695fa47643449e01a0a4456401d
+guid: 5ae2fa8c515af8d4cbf01596a648f994
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fire_3_0
+      name: Level_3_Tile_Map_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 60
-        width: 120
-        height: 60
+        y: 0
+        width: 900
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f4a8daaf62ad094eab8640bd8e00afe
-      internalID: 2050285780
+      spriteID: 6e5d4029f379b07499514f8d2ff990eb
+      internalID: -1402031226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_3_1
+      name: Level_3_Tile_Map_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 900
         y: 0
-        width: 120
-        height: 60
+        width: 900
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7f922e525e096f498561803b3d98d94
-      internalID: -1314273042
+      spriteID: 69f31815842270440b5d5e507dc4120a
+      internalID: -1104312511
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fire_3_0: 2050285780
-      Fire_3_1: -1314273042
+      Level_3_Tile_Map_0: -1402031226
+      Level_3_Tile_Map_1: -1104312511
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
