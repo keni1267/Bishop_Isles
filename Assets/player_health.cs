@@ -17,7 +17,8 @@ public class player_health : MonoBehaviour
     public Healthpickup pickup;
 
     public GameManagerScript gameManager;
-    
+
+    float lastfiretime;
 
 
     void Start()
@@ -64,6 +65,19 @@ public class player_health : MonoBehaviour
             Destroy(collider.gameObject);
             Heal(15);
             
+        }
+    }
+    private void OnCollisionStay2D(Collision2D col)
+    {
+
+        if (Time.time - lastfiretime < 1) return;
+
+        if (col.gameObject.tag.Equals("fire"))
+        {
+            Damage(15);
+            
+            lastfiretime = Time.time;
+
         }
     }
 
