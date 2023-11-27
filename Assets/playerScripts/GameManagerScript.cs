@@ -59,11 +59,13 @@ public class GameManagerScript : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseMenuScreen.SetActive(true);
+        
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
         pauseMenuScreen.SetActive(false);
+        
     }
 }
