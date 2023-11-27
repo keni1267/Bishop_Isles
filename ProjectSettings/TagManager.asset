@@ -7,6 +7,9 @@ TagManager:
   - Projectile
   - Healthpickup
   - Cloak
+  - BOSS
+  - right
+  - left
   layers:
   - Default
   - TransparentFX
