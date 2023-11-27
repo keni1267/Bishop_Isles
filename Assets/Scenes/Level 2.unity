@@ -35303,7 +35303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   max_health: 0
-  HealthBar: {fileID: 767296557}
+  HealthBar: {fileID: 0}
   pickup: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!95 &1315411187
@@ -35394,7 +35394,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3.15
+  m_GravityScale: 3.1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -93239,7 +93239,7 @@ Tilemap:
       - {fileID: -1254046888, guid: 88eac819c09599146955d3592a90db08, type: 3}
       - {fileID: -1512396306, guid: 88eac819c09599146955d3592a90db08, type: 3}
       - {fileID: 892799864, guid: 88eac819c09599146955d3592a90db08, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 412, y: 0, z: 0}
@@ -93374,7 +93374,7 @@ Tilemap:
       - {fileID: -1254046888, guid: 88eac819c09599146955d3592a90db08, type: 3}
       - {fileID: -1512396306, guid: 88eac819c09599146955d3592a90db08, type: 3}
       - {fileID: 892799864, guid: 88eac819c09599146955d3592a90db08, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 420, y: 6, z: 0}
@@ -93687,7 +93687,7 @@ Tilemap:
       - {fileID: 1524713066, guid: 0b475bf1a8e34c14ca90fc23d48c415a, type: 3}
       - {fileID: -1640225445, guid: 0b475bf1a8e34c14ca90fc23d48c415a, type: 3}
       - {fileID: 1858222336, guid: 0b475bf1a8e34c14ca90fc23d48c415a, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 462, y: 19, z: 0}
@@ -93831,7 +93831,7 @@ Tilemap:
       - {fileID: 1524713066, guid: 0b475bf1a8e34c14ca90fc23d48c415a, type: 3}
       - {fileID: -1640225445, guid: 0b475bf1a8e34c14ca90fc23d48c415a, type: 3}
       - {fileID: 1858222336, guid: 0b475bf1a8e34c14ca90fc23d48c415a, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 258, y: 36, z: 0}
