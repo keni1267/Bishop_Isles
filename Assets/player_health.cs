@@ -74,7 +74,7 @@ public class player_health : MonoBehaviour
 
         if (col.gameObject.tag.Equals("fire"))
         {
-            Damage(15);
+            Damage(25);
             
             lastfiretime = Time.time;
 
