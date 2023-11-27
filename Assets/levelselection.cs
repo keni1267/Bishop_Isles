@@ -12,7 +12,7 @@ public class levelselection : MonoBehaviour
     void Start()
     {
         int levelAt = PlayerPrefs.GetInt("levelAt", 2) - 1;
-        Debug.Log(levelAt);
+        Debug.Log("jfklsdfm");
         for(int i = 0;i < lvlButtons.Length;i++)
         {
             if(i + 2 > levelAt)
