@@ -35,8 +35,10 @@ public class player_health : MonoBehaviour
             Debug.Log(health);
         }
          if(health <= 0){
-            Destroy(gameObject);
             gameManager.gameOver();
+            Debug.Log("Dead");
+            //Destroy(gameObject);
+            //gameManager.gameOver();
             //SceneManager.LoadScene("GameOverScreen");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
          }
