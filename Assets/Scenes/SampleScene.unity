@@ -27442,7 +27442,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.03, y: 0.7}
+  m_Size: {x: 0.27, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &171523581
 MonoBehaviour:
@@ -36765,7 +36765,7 @@ Tilemap:
       - {fileID: 612451177, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
       - {fileID: -216497261, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
       - {fileID: 289921174, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
-      m_AnimationSpeed: 2.56
+      m_AnimationSpeed: 2.5600002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 17, y: -11, z: 0}
