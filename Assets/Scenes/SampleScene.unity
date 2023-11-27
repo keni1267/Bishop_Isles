@@ -26982,7 +26982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &133727165
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -36805,7 +36805,7 @@ Tilemap:
       - {fileID: 612451177, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
       - {fileID: -216497261, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
       - {fileID: 289921174, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
-      m_AnimationSpeed: 2.5600002
+      m_AnimationSpeed: 2.56
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 21, y: -11, z: 0}
