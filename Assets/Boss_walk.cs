@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Boss_walk : StateMachineBehaviour
 {
-    public float speed = 4.5f;
+    public float speed = 4.0f;
     public float attackRange = 10000f;
     Transform player;
     Rigidbody2D rb;
@@ -63,14 +63,14 @@ public class Boss_walk : StateMachineBehaviour
             animator.SetTrigger("Attack");
 
             
-            if (Time.time > ready)
+            /*if (Time.time > ready)
             {
                 ready = Time.time + 1 / firerate;
                 monoBehaviour.StartCoroutine(DelayedShockWave(0.1f));
                 
 
 
-            }
+            }*/
             
             
         }

@@ -6,6 +6,7 @@ using System.IO.Ports;
 using System.Threading;
 using System;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class projectileDmg : MonoBehaviour
 {
@@ -26,7 +27,22 @@ public class projectileDmg : MonoBehaviour
         if (col.gameObject.tag.Equals("Projectile"))
         {
 
-           GetComponent<Bishop_Crab>().TakeDamage(200);
+            //GetComponent<Bishop_Crab>().TakeDamage(200);
+            //Debug.Log("kjsdnsjkdnsdjk");
+            Bishop_Crab bishopCrab = GetComponent<Bishop_Crab>();
+            if (bishopCrab != null)
+            {
+                bishopCrab.TakeDamage(200);
+                Debug.Log("Hit Bishop_Crab");
+            }
+
+            // Check for BossHealth component
+            BossHealth bossHealth = GetComponent<BossHealth>();
+            if (bossHealth != null)
+            {
+                bossHealth.TakeDamage(10);
+                Debug.Log("Hit BossHealth");
+            }
         }
     }
 }
