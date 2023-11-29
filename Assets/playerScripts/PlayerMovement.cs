@@ -126,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         Debug.Log("RESTARTEEEEEED");
+        gameManager.ResumeGame();
         fisherman_facing = sprite.flipX;
 
         rend = GetComponent<Renderer>();
@@ -245,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
                 inData = last_movement.ToString() + "\n";
 
         }
-
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded()) { Debug.Log("SPAAAAACEEEEE"); }
         if (((Input.GetKeyDown(KeyCode.Space) || jump_controller) && isGrounded()/*anotherthing*/) /*&& isGrounded()*/)
         {
 
@@ -262,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (transform.position.y < -15)
+        if (transform.position.y < -13)
         {
             Debug.Log(transform.position.y);
             //isDead(true);
@@ -399,6 +400,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded()
     {
+        Debug.Log("HERE IN GROUNDED");
+        Debug.Log(Physics2D.BoxCast(CC.bounds.center, CC.bounds.size, 0f, Vector2.down, .1f, jumpableArea));
         return Physics2D.BoxCast(CC.bounds.center, CC.bounds.size, 0f, Vector2.down, .1f, jumpableArea);
 
 

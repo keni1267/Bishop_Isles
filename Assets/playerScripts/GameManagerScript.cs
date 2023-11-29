@@ -39,8 +39,11 @@ public class GameManagerScript : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene("gameScene");
+        SceneManager.LoadScene("SampleScene");
+        Debug.Log("GAME MANAGER RESTART");
         Debug.Log("Restart");
+        Time.timeScale = 1;
+        pauseMenuScreen.SetActive(false);
     }
 
     public void mainMenu()
@@ -59,11 +62,14 @@ public class GameManagerScript : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseMenuScreen.SetActive(true);
+        
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        Debug.Log("GAME MANAGER RESUME");
         pauseMenuScreen.SetActive(false);
+        
     }
 }
