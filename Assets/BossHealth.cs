@@ -10,6 +10,8 @@ public class BossHealth : MonoBehaviour
     
     float maxHealth = 200;
     float currentHealth;
+    public bool isInvulnerable = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +37,14 @@ public class BossHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isInvulnerable)
+        {
+            return;
+        }
         currentHealth -= damage;
+        animator.SetTrigger("isHit");
         healthbar.fillAmount = currentHealth / 200f;
-        Debug.Log(currentHealth);
+        Debug.Log(damage);
         //animator.SetTrigger("Hurt");
         //play hurt animation
 
@@ -55,6 +62,7 @@ public class BossHealth : MonoBehaviour
 
     public void Die()
     {
+
         animator.enabled = false;
 
     }

@@ -10,6 +10,9 @@ TagManager:
   - BOSS
   - right
   - left
+  - sright
+  - sleft
+  - middle
   layers:
   - Default
   - TransparentFX

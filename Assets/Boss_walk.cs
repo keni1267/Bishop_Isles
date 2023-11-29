@@ -56,23 +56,29 @@ public class Boss_walk : StateMachineBehaviour
             animator.SetTrigger("Attack");
             sendShockWave();
         }*/
-        if (5f <= Vector2.Distance(player.position, rb.position) && Vector2.Distance(player.position, rb.position) <= 8f)
+        if (7f <= Vector2.Distance(player.position, rb.position) && Vector2.Distance(player.position, rb.position) <= 10f)
         {
-            
+
 
             animator.SetTrigger("Attack");
 
-            
+
             /*if (Time.time > ready)
             {
                 ready = Time.time + 1 / firerate;
                 monoBehaviour.StartCoroutine(DelayedShockWave(0.1f));
-                
+
 
 
             }*/
+
+
+        }
+
+        if (Vector2.Distance(player.position, rb.position) < 6f)
+        {
             
-            
+            animator.SetTrigger("sliceAttack");
         }
 
 
@@ -83,6 +89,8 @@ public class Boss_walk : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("Attack");
+        //animator.ResetTrigger("sliceAttack");
+
     }
 
     /*void sendShockWave()
