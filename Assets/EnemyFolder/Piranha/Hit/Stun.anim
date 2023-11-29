@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pirahna_attack
+  m_Name: Stun
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,15 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: ac535d1f4a3b3cd429662fc838128afa, type: 3}
-    - time: 0.21666667
-      value: {fileID: 21300000, guid: 61d50542f82d8b34883bf9f454346625, type: 3}
+      value: {fileID: -2009922474, guid: b9d5610745f3cce4fa3c8128bfde79a2, type: 3}
     - time: 0.41666666
-      value: {fileID: 21300000, guid: 9805a96b945600549acd77c787849327, type: 3}
-    - time: 0.6333333
-      value: {fileID: 21300000, guid: 7e6c8f412b9f0224ca76b765ca0aee43, type: 3}
-    - time: 0.8333333
-      value: {fileID: 21300000, guid: 8435fe08a7ea6d843b7510ebffdddae3, type: 3}
+      value: {fileID: -342027699, guid: b9d5610745f3cce4fa3c8128bfde79a2, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,17 +42,14 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: ac535d1f4a3b3cd429662fc838128afa, type: 3}
-    - {fileID: 21300000, guid: 61d50542f82d8b34883bf9f454346625, type: 3}
-    - {fileID: 21300000, guid: 9805a96b945600549acd77c787849327, type: 3}
-    - {fileID: 21300000, guid: 7e6c8f412b9f0224ca76b765ca0aee43, type: 3}
-    - {fileID: 21300000, guid: 8435fe08a7ea6d843b7510ebffdddae3, type: 3}
+    - {fileID: -2009922474, guid: b9d5610745f3cce4fa3c8128bfde79a2, type: 3}
+    - {fileID: -342027699, guid: b9d5610745f3cce4fa3c8128bfde79a2, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.84999996
+    m_StopTime: 0.43333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -77,18 +68,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.7
-    functionName: Attack
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.8333333
-    functionName: TriggerCooling
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

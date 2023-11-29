@@ -42,6 +42,7 @@ public class Piranha : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         //GetComponent<SpriteRenderer>().enabled = false;
         //GetComponent<Animator>().enabled = false;
+        //GetComponent<Piranha_AI>().enabled = false;
         GetComponent<Piranha_AI>().enabled = false;
         this.enabled= false;
     }
