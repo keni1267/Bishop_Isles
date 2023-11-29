@@ -43,7 +43,7 @@ public class Boss_walk : StateMachineBehaviour
         boss.LookAtPlayer();
         Vector2 target = new Vector2(player.position.x, player.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-        //rb.MovePosition(newPos);
+        rb.MovePosition(newPos);
 
         /*if(1f <= Vector2.Distance(player.position, rb.position) <= 4f)
         {
