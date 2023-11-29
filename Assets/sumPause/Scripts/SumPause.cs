@@ -82,10 +82,12 @@ public class SumPause : MonoBehaviour {
         if(status) {
             // What to do when paused
             Time.timeScale = 0; // Set game speed to 0
+            Debug.LogError("PAUSED");
         }
         else {
             // What to do when unpaused
             Time.timeScale = 1; // Resume normal game speed
+            Debug.LogError("UNPAUSED");
         }
     }
 
