@@ -62,7 +62,8 @@ public class GameManagerScript : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseMenuScreen.SetActive(true);
-        
+        Debug.Log("PAUSE BUTTON LVL 2 HOPEFULLY");
+
     }
 
     public void ResumeGame()
