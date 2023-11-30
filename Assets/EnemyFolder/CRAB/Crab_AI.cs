@@ -90,9 +90,12 @@ public class Crab_AI : MonoBehaviour
         attackMode = true;
        // anim.SetBool("Attack",true);
         GetComponent<Animator>().SetTrigger("Attack"); // same as anim.SetBool("Attack", true) but it doesnt glitch as much
+/*
+        if (attackMode && playerHealth != null) 
+        { 
 
-        if (attackMode && playerHealth != null)
-           playerHealth.Damage(damage);
+        }*/
+           //playerHealth.Damage(damage);
         
     
     }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class PauseMenuExample : MonoBehaviour {
@@ -43,4 +43,4 @@ public class PauseMenuExample : MonoBehaviour {
         }
     }
 
-}
+}*/
