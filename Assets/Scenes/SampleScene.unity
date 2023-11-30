@@ -37344,7 +37344,7 @@ Tilemap:
       - {fileID: 612451177, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
       - {fileID: -216497261, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
       - {fileID: 289921174, guid: cadba10992bf128498c344ec2faa1b9a, type: 3}
-      m_AnimationSpeed: 2.56
+      m_AnimationSpeed: 2.5600002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 28, y: -11, z: 0}
@@ -41510,6 +41510,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 159561405}
   - {fileID: 1257811030}
+  crabattack_sound: {fileID: 0}
 --- !u!95 &681331155
 Animator:
   serializedVersion: 5
@@ -43236,6 +43237,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 1173203865}
   - {fileID: 1882433020}
+  crabattack_sound: {fileID: 0}
 --- !u!114 &863455922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45882,7 +45884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1266306045
 AudioSource:
   m_ObjectHideFlags: 0
@@ -48176,7 +48178,7 @@ MonoBehaviour:
   dialogue:
   - There are obstacles ahead! Use SPACE to jump to nagivate through the obstacles.
   - Beware of the water! You might lose health and eventually die if you drown!
-  wordSpeed: 0.02
+  wordSpeed: 0.001
   firstTime: 1
 --- !u!61 &1577486978
 BoxCollider2D:
@@ -48948,6 +48950,7 @@ MonoBehaviour:
   - {fileID: 1431124967}
   - {fileID: 1952850367}
   - {fileID: 853496900}
+  crabattack_sound: {fileID: 0}
 --- !u!95 &1687842144
 Animator:
   serializedVersion: 5
@@ -49246,11 +49249,11 @@ MonoBehaviour:
   diaPanel: {fileID: 1945641274}
   button: {fileID: 1738810573}
   dialogue:
-  - '!!!'
   - Watch out! There are Bishop Crabs! They'll do damage to you. LEFT CLICK to use
     your fishing rod to attack.
   - RIGHT click to attack with your spear.
-  wordSpeed: 0.02
+  - 'There will be powerups that will aid you in combat. '
+  wordSpeed: 0.001
   firstTime: 1
 --- !u!61 &1729979939
 BoxCollider2D:
@@ -51009,6 +51012,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 1722237452}
   - {fileID: 361047275}
+  crabattack_sound: {fileID: 0}
 --- !u!95 &1917315877
 Animator:
   serializedVersion: 5
