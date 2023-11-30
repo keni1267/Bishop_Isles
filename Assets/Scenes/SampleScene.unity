@@ -47584,7 +47584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1504069110
 Transform:
   m_ObjectHideFlags: 0
@@ -47884,8 +47884,13 @@ MonoBehaviour:
   player: {fileID: 0}
   dialogue:
   - There are obstacles ahead! Use SPACE to jump to nagivate through the obstacles.
+<<<<<<< HEAD
   - Beware of the water! You might lose health and eventually die if you drown!
   wordSpeed: 0.005
+=======
+  - Try not to fall in the water! You will die!
+  wordSpeed: 1e-18
+>>>>>>> d3d13c0fd013016fd6234c7b21dbffa85fa00378
   firstTime: 1
 --- !u!61 &1577486978
 BoxCollider2D:
@@ -48958,7 +48963,11 @@ MonoBehaviour:
   - Watch out! There are Bishop Crabs! They'll do damage to you. LEFT CLICK to use
     your fishing rod to attack.
   - RIGHT click to attack with your spear.
+<<<<<<< HEAD
   - 'There will be power-ups along the way that will aid you in combat. '
+=======
+  - There will be powerups that will boost your combat ability.
+>>>>>>> d3d13c0fd013016fd6234c7b21dbffa85fa00378
   wordSpeed: 0.005
   firstTime: 1
 --- !u!61 &1729979939
