@@ -7,7 +7,12 @@ TagManager:
   - Projectile
   - Healthpickup
   - Cloak
-  - fire
+  - BOSS
+  - right
+  - left
+  - sright
+  - sleft
+  - middle
   layers:
   - Default
   - TransparentFX
@@ -18,8 +23,8 @@ TagManager:
   - ground
   - chief
   - Pickup
-  - 
-  - 
+  - boss
+  - player
   - 
   - 
   - 
