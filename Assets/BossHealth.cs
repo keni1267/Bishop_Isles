@@ -7,11 +7,15 @@ public class BossHealth : MonoBehaviour
 {
     public Animator animator;
     public Image healthbar;
-    
+    [SerializeField] private AudioSource bossWalk;
+    [SerializeField] private AudioSource bossWalk2;
+    [SerializeField] private AudioSource damageSound;
+    [SerializeField] private AudioSource stompSound;
+    [SerializeField] private AudioSource energySlash;
     float maxHealth = 200;
     float currentHealth;
     public bool isInvulnerable = false;
-
+    public Canvas healthCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,9 +66,50 @@ public class BossHealth : MonoBehaviour
 
     public void Die()
     {
-
+        healthCanvas.enabled = false;
         animator.enabled = false;
 
+    }
+
+    public void playWalkSound()
+    {
+        if (!bossWalk.isPlaying)
+        {
+            bossWalk.Play();
+        }
+    }
+
+    public void playWalkSound2()
+    {
+        if (!bossWalk2.isPlaying)
+        {
+          bossWalk2.Play();
+        }
+    }
+
+    public void playDamageSound()
+    {
+        if(!damageSound.isPlaying)
+        {
+            damageSound.Play();
+        }
+
+    }
+
+    public void playStompAttackSound()
+    {
+        if (!stompSound.isPlaying)
+        {
+            stompSound.Play();
+        }
+    }
+
+    public void playenergySlashSound()
+    {
+        if (!energySlash.isPlaying)
+        {
+            energySlash.Play();
+        }
     }
 
     // Update is called once per frame

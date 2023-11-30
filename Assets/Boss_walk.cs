@@ -17,7 +17,8 @@ public class Boss_walk : StateMachineBehaviour
     private MonoBehaviour monoBehaviour;
     float ready;
     private float firerate = 1;
-    float delay; 
+    float delay;
+    [SerializeField] private AudioSource bossWalk;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
