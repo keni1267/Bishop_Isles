@@ -270,7 +270,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(KeyCode.Space);
         }
 
-
+        Debug.Log(transform.position.y);
         if (transform.position.y < -13)
         {
             Debug.Log(transform.position.y);
@@ -318,15 +318,44 @@ public class PlayerMovement : MonoBehaviour
     void attack()
     {
         animator.SetTrigger("Attack");
-
+        //Debug.Log("attack called");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         //Collider2D[] hitEnemies  = Physics2D.OverlapBoxAll(attackPoint.position, new Vector2(X,Y), enemyLayers);
 
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            Debug.Log("jsdfncjksdfnjklsdnfjksdncjljsdklcjskldcjklsdcklsdjcklsdjcklsd");
+            Bishop_Crab bishopCrab = enemy.GetComponent<Bishop_Crab>();
+            if (bishopCrab != null)
+            {
+                bishopCrab.TakeDamage(attackDamage);
+                Debug.Log("Hit Bishop_Crab");
+                continue; // Move to the next enemy in the loop
+            }
 
-            enemy.GetComponent<Bishop_Crab>().TakeDamage(attackDamage);
+            // Check for BossHealth component
+            BossHealth bossHealth = enemy.GetComponent<BossHealth>();
+            if (bossHealth != null)
+            {
+                bossHealth.TakeDamage(attackDamage);
+                Debug.Log("Hit BossHealth");
+                continue; // Move to the next enemy in the loop
+            }
+
+            Piranha piranha = enemy.GetComponent<Piranha>();
+            if (piranha != null)
+            {
+                piranha.TakeDamage(attackDamage);
+                Debug.Log("Hit BossHealth");
+                continue; // Move to the next enemy in the loop
+            }
+
+
+
+            /*enemy.GetComponent<Bishop_Crab>().TakeDamage(attackDamage);
+            enemy.GetComponent<BossHealth>().TakeDamage(attackDamage);
+            Debug.Log("Hit here");*/
         }
 
 
