@@ -47887,8 +47887,8 @@ MonoBehaviour:
   player: {fileID: 0}
   dialogue:
   - There are obstacles ahead! Use SPACE to jump to nagivate through the obstacles.
-  - test
-  wordSpeed: 0.005
+  - Try not to fall in the water! You will die!
+  wordSpeed: 1e-18
   firstTime: 1
 --- !u!61 &1577486978
 BoxCollider2D:
@@ -48959,11 +48959,11 @@ MonoBehaviour:
   diaPanel: {fileID: 1945641274}
   button: {fileID: 1738810573}
   dialogue:
-  - '!!!'
   - Watch out! There are Bishop Crabs! They'll do damage to you. LEFT CLICK to use
     your fishing rod to attack.
   - RIGHT click to attack with your spear.
-  wordSpeed: 0.02
+  - There will be powerups that will boost your combat ability.
+  wordSpeed: 0.005
   firstTime: 1
 --- !u!61 &1729979939
 BoxCollider2D:

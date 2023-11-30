@@ -78,6 +78,26 @@ public class AttackDialogueScript : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
             playerIsClose = true;
+            other.GetComponent<Animator>().enabled = false;
+            other.gameObject.GetComponent<PlayerMovement>().enabled = false;
+            Invoke("EnablePlayerMovement", 5f);
+        }
+
+    }
+
+    private void EnablePlayerMovement() {
+        // Find the Player object and enable the Animator and PlayerMovement components.
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) {
+            Animator playerAnimator = player.GetComponent<Animator>();
+            if (playerAnimator != null) {
+                playerAnimator.enabled = true;
+            }
+
+            PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+            if (playerMovement != null) {
+                playerMovement.enabled = true;
+            }
         }
     }
 
