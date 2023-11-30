@@ -11,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
 {
     public GameObject gameOverUI;
     public GameObject pauseMenuScreen;
+    public bool ntouch = false;
     void Start()
     {
         /*Cursor.visible = false;
@@ -40,6 +41,15 @@ public class GameManagerScript : MonoBehaviour
     public void restart()
     {
         SceneManager.LoadScene("SampleScene");
+        Debug.Log("GAME MANAGER RESTART");
+        Debug.Log("Restart");
+        Time.timeScale = 1;
+        pauseMenuScreen.SetActive(false);
+    }
+
+    public void restart2()
+    {
+        SceneManager.LoadScene("Level 2");
         Debug.Log("GAME MANAGER RESTART");
         Debug.Log("Restart");
         Time.timeScale = 1;

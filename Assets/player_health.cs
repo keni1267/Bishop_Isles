@@ -53,7 +53,7 @@ public class player_health : MonoBehaviour
     }
 
     public void Damage(int amount){
-        if(health > 0){
+        if(health > 0 && gameManager.ntouch == false){
             health -= amount;
             Debug.Log(health);
             Debug.Log(amount);

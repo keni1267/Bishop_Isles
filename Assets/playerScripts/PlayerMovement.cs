@@ -263,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Debug.Log(transform.position.y);
-        if (transform.position.y < -13)
+        if (transform.position.y < -13 && transform.position.x > 14)
         {
             //Debug.Log(transform.position.y);
             //isDead(true);
@@ -456,6 +456,7 @@ public class PlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "Cloak")
         {
             Debug.Log("cloak");
+            gameManager.ntouch = true;
             Destroy(collider.gameObject);
             StartCoroutine("GetInvisible");
             //pickup.HealthRestoree();
@@ -471,6 +472,7 @@ public class PlayerMovement : MonoBehaviour
         Physics2D.IgnoreLayerCollision (0,3,false);
         c.a = 1f;
         rend.material.color = c;
+        gameManager.ntouch = false;
     }
     void FaceMouse()
     {
