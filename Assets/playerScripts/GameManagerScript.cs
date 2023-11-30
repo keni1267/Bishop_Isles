@@ -55,7 +55,14 @@ public class GameManagerScript : MonoBehaviour
         Time.timeScale = 1;
         pauseMenuScreen.SetActive(false);
     }
-
+    public void restart3()
+    {
+        SceneManager.LoadScene("Level 3");
+        Debug.Log("GAME MANAGER RESTART");
+        Debug.Log("Restart");
+        Time.timeScale = 1;
+        pauseMenuScreen.SetActive(false);
+    }
     public void mainMenu()
     {
         SceneManager.LoadScene("Menu");
