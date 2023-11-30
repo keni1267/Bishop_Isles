@@ -27,9 +27,9 @@ public class Crab_AI : MonoBehaviour
     private bool hasAttacked = false; //so it only gets damage once
 
     #endregion
+    [SerializeField] private AudioSource crabattack_sound;
 
-
-   void Awake()
+    void Awake()
     {
         intTimer = timer;
         anim = GetComponent<Animator>();
@@ -90,7 +90,11 @@ public class Crab_AI : MonoBehaviour
         attackMode = true;
        // anim.SetBool("Attack",true);
         GetComponent<Animator>().SetTrigger("Attack"); // same as anim.SetBool("Attack", true) but it doesnt glitch as much
-
+        if (!crabattack_sound.isPlaying)
+        {
+            crabattack_sound.Play();
+           
+        }
         if (attackMode && playerHealth != null)
            playerHealth.Damage(damage);
         
