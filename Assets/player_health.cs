@@ -50,7 +50,9 @@ public class player_health : MonoBehaviour
 
     public void Damage(int amount){
         if(health > 0){
-            health -= amount;                
+            health -= amount;
+            Debug.Log(health);
+            Debug.Log(amount);
             //Debug.Log(health);
         }
          if(health <= 0){
@@ -99,6 +101,23 @@ public class player_health : MonoBehaviour
             lastfiretime = Time.time;
 
         }
+
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("shock"))
+        {
+            Damage(10);
+
+        }
+
+        if (col.gameObject.tag.Equals("slice"))
+        {
+            Damage(5);
+        }
+
     }
 
 

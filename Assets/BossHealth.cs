@@ -12,7 +12,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private AudioSource damageSound;
     [SerializeField] private AudioSource stompSound;
     [SerializeField] private AudioSource energySlash;
-    float maxHealth = 200;
+    float maxHealth = 250;
     float currentHealth;
     public bool isInvulnerable = false;
     public Canvas healthCanvas;
@@ -47,7 +47,7 @@ public class BossHealth : MonoBehaviour
         }
         currentHealth -= damage;
         animator.SetTrigger("isHit");
-        healthbar.fillAmount = currentHealth / 200f;
+        healthbar.fillAmount = currentHealth / 300f;
         Debug.Log(damage);
         //animator.SetTrigger("Hurt");
         //play hurt animation

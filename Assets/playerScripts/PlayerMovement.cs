@@ -262,10 +262,10 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(KeyCode.Space);
         }
 
-        Debug.Log(transform.position.y);
+        //Debug.Log(transform.position.y);
         if (transform.position.y < -13)
         {
-            Debug.Log(transform.position.y);
+            //Debug.Log(transform.position.y);
             //isDead(true);
             gameOver();
             //gameObject.SetActive(false);
