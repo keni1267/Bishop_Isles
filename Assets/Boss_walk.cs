@@ -76,10 +76,15 @@ public class Boss_walk : StateMachineBehaviour
 
         }
 
-        if (Vector2.Distance(player.position, rb.position) < 6f)
+        if (4f <= Vector2.Distance(player.position, rb.position) && Vector2.Distance(player.position, rb.position) < 6f)
         {
             
             animator.SetTrigger("sliceAttack");
+        }
+
+        if(Vector2.Distance(player.position, rb.position) < 2f)
+        {
+            animator.SetTrigger("justStomp");
         }
 
 

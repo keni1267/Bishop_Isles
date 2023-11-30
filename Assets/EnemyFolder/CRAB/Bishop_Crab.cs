@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bishop_Crab : MonoBehaviour
 {
     public Animator animator;
-    private int maxHealth = 500;
+    private int maxHealth = 150;
     int currentHealth;
 
     void Start()

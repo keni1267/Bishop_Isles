@@ -47,7 +47,7 @@ public class BossHealth : MonoBehaviour
         }
         currentHealth -= damage;
         animator.SetTrigger("isHit");
-        healthbar.fillAmount = currentHealth / 300f;
+        healthbar.fillAmount = currentHealth / 250f;
         Debug.Log(damage);
         //animator.SetTrigger("Hurt");
         //play hurt animation

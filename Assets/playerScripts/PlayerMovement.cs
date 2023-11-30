@@ -321,7 +321,7 @@ public class PlayerMovement : MonoBehaviour
             Bishop_Crab bishopCrab = enemy.GetComponent<Bishop_Crab>();
             if (bishopCrab != null)
             {
-                bishopCrab.TakeDamage(attackDamage);
+                bishopCrab.TakeDamage(50);
                 Debug.Log("Hit Bishop_Crab");
                 continue; // Move to the next enemy in the loop
             }
@@ -330,7 +330,7 @@ public class PlayerMovement : MonoBehaviour
             BossHealth bossHealth = enemy.GetComponent<BossHealth>();
             if (bossHealth != null)
             {
-                bossHealth.TakeDamage(attackDamage);
+                bossHealth.TakeDamage(30);
                 Debug.Log("Hit BossHealth");
                 continue; // Move to the next enemy in the loop
             }
@@ -338,7 +338,7 @@ public class PlayerMovement : MonoBehaviour
             Piranha piranha = enemy.GetComponent<Piranha>();
             if (piranha != null)
             {
-                piranha.TakeDamage(attackDamage);
+                piranha.TakeDamage(50);
                 Debug.Log("Hit BossHealth");
                 continue; // Move to the next enemy in the loop
             }

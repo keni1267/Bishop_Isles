@@ -32,7 +32,7 @@ public class projectileDmg : MonoBehaviour
             Bishop_Crab bishopCrab = GetComponent<Bishop_Crab>();
             if (bishopCrab != null)
             {
-                bishopCrab.TakeDamage(200);
+                bishopCrab.TakeDamage(25);
                 Debug.Log("Hit Bishop_Crab");
             }
 
@@ -40,14 +40,14 @@ public class projectileDmg : MonoBehaviour
             BossHealth bossHealth = GetComponent<BossHealth>();
             if (bossHealth != null)
             {
-                bossHealth.TakeDamage(10);
+                bossHealth.TakeDamage(15);
                 Debug.Log("Hit BossHealth");
             }
 
             Piranha piranha = GetComponent<Piranha>();
             if (piranha != null)
             {
-                piranha.TakeDamage(200);
+                piranha.TakeDamage(25);
                 Debug.Log("Hit BossHealth");
             }
         }

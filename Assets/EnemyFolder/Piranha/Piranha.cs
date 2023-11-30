@@ -6,7 +6,7 @@ using UnityEngine;
 public class Piranha : MonoBehaviour
 {
     public Animator animator;
-    private int maxHealth = 100;
+    private int maxHealth = 150;
     int currentHealth;
 
     void Start()

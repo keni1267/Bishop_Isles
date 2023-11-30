@@ -109,13 +109,13 @@ public class player_health : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("shock"))
         {
-            Damage(10);
+            Damage(15);
 
         }
 
         if (col.gameObject.tag.Equals("slice"))
         {
-            Damage(5);
+            Damage(10);
         }
 
     }
