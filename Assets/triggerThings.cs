@@ -24,8 +24,8 @@ public class triggerThings : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             enter.isTrigger = false;
-            CameraFollow fs  = mainCamera.GetComponent<CameraFollow>();
-            fs.enabled = false;
+            //CameraFollow fs  = mainCamera.GetComponent<CameraFollow>();
+            //fs.enabled = false;
 
 
         }

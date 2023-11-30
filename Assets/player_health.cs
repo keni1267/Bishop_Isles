@@ -126,6 +126,7 @@ public class player_health : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        
         if (col.gameObject.tag.Equals("shock"))
         {
             Damage(15);
@@ -136,6 +137,8 @@ public class player_health : MonoBehaviour
         {
             Damage(10);
         }
+        Debug.Log(health);
+        
 
     }
 

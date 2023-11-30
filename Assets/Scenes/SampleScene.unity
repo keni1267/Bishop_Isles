@@ -27117,7 +27117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!320 &133727165
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -27791,7 +27791,7 @@ MonoBehaviour:
   Crab: {fileID: 261055629}
   Krill: {fileID: 1578121333}
   pickup: {fileID: 0}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 364780447}
   hurt_sound: {fileID: 171523586}
   died_sound: {fileID: 171523587}
   heal_sound: {fileID: 171523588}
@@ -48594,7 +48594,7 @@ MonoBehaviour:
   dialogue:
   - There are obstacles ahead! Use SPACE to jump to nagivate through the obstacles.
   - Beware of the water! You might lose health and eventually die if you drown!
-  wordSpeed: 0.02
+  wordSpeed: 0.005
   firstTime: 1
 --- !u!61 &1577486978
 BoxCollider2D:
@@ -49860,11 +49860,11 @@ MonoBehaviour:
   diaPanel: {fileID: 1945641274}
   button: {fileID: 1738810573}
   dialogue:
-  - '!!!'
   - Watch out! There are Bishop Crabs! They'll do damage to you. LEFT CLICK to use
     your fishing rod to attack.
   - RIGHT click to attack with your spear.
-  wordSpeed: 0.02
+  - The power ups will help you in combat.
+  wordSpeed: 0.005
   firstTime: 1
 --- !u!61 &1729979939
 BoxCollider2D:
@@ -49890,7 +49890,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1729979941
 Transform:
@@ -49900,7 +49900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729979937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.322, y: -7.8381, z: 0}
+  m_LocalPosition: {x: 38, y: -7.8381, z: 0}
   m_LocalScale: {x: 4.744092, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
