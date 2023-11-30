@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5276430774304974529, guid: 085fe879253965f4ab27b3e4389880e5, type: 3}
       propertyPath: Scene
-      value: Level 2
+      value: Level_2
       objectReference: {fileID: 0}
     - target: {fileID: 5276430774304974531, guid: 085fe879253965f4ab27b3e4389880e5, type: 3}
       propertyPath: m_Type
@@ -496,7 +496,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5276430774304974529, guid: 085fe879253965f4ab27b3e4389880e5, type: 3}
       propertyPath: Scene
-      value: Level 2
+      value: Level_3
       objectReference: {fileID: 0}
     - target: {fileID: 5276430774304974531, guid: 085fe879253965f4ab27b3e4389880e5, type: 3}
       propertyPath: m_Type
