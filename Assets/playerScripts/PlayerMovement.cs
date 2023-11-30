@@ -8,11 +8,12 @@ using System;
 using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb; // Changed it to public - Brian
     private BoxCollider2D CC;
     [SerializeField] private LayerMask jumpableArea;
     private Animator anim;
-
+    //Brian code
+    public bool canMove;
     private float dirX = 0f;
     private bool att = false;
     bool fisherman_facing; //false for not flipped facing right //true for flipped facing left
@@ -114,7 +115,8 @@ public class PlayerMovement : MonoBehaviour
             }
 
     }
-    private void Start()
+    // changing it to public - Brian
+    public void Start()
     {
         our_controller.Close();
 
@@ -130,14 +132,20 @@ public class PlayerMovement : MonoBehaviour
         fisherman_facing = sprite.flipX;
 
         rend = GetComponent<Renderer>();
-        c = rend.material.color; 
+        c = rend.material.color;
 
-
+        // Brian Code
+        canMove = true;
     }
 
-
-    private void Update()
+    // changing it to public - Brian
+    public void Update()
     {
+        if(!canMove) // Brian Code
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         //   Debug.Log(sprite.sprite.name);
         if (sprite.sprite.name.Contains("Fisherman"))
         {

@@ -27512,9 +27512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19720b93502b23442a91145e0c7c47b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   jumpableArea:
     serializedVersion: 2
     m_Bits: 64
+  canMove: 0
   moveSpeed: 7
   jumpForce: 100
   startTimeBtwAttack: 0
@@ -47585,7 +47587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1504069110
 Transform:
   m_ObjectHideFlags: 0
@@ -47882,10 +47884,11 @@ MonoBehaviour:
   diatext: {fileID: 1682961548}
   diaPanel: {fileID: 1945641274}
   button: {fileID: 1085877648}
+  player: {fileID: 0}
   dialogue:
   - There are obstacles ahead! Use SPACE to jump to nagivate through the obstacles.
-  - Beware of the water! You might lose health and eventually die if you drown!
-  wordSpeed: 0.02
+  - test
+  wordSpeed: 0.005
   firstTime: 1
 --- !u!61 &1577486978
 BoxCollider2D:
