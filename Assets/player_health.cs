@@ -87,7 +87,12 @@ public class player_health : MonoBehaviour
             Debug.Log(health);
             //Destroy(gameObject);
         }
-   }
+        if (!heal_sound.isPlaying)
+        {
+            heal_sound.Play();
+
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
