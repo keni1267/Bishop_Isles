@@ -8,6 +8,7 @@ public class Piranha : MonoBehaviour
     public Animator animator;
     private int maxHealth = 100;
     int currentHealth;
+    [SerializeField] private AudioSource fishhurt_sound;
 
     void Start()
     {
@@ -23,9 +24,13 @@ public class Piranha : MonoBehaviour
         Debug.Log(currentHealth);
         Debug.Log("Pirana HITTTTT");
         //play hurt animation
+        if (!fishhurt_sound.isPlaying)
+        {
+            fishhurt_sound.Play();
+            //rod_attack_sound.Stop();
+        }
 
-
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
 
