@@ -262,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(KeyCode.Space);
         }
 
-
+        Debug.Log(transform.position.y);
         if (transform.position.y < -13)
         {
             Debug.Log(transform.position.y);
@@ -317,6 +317,7 @@ public class PlayerMovement : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            Debug.Log("jsdfncjksdfnjklsdnfjksdncjljsdklcjskldcjklsdcklsdjcklsdjcklsd");
             Bishop_Crab bishopCrab = enemy.GetComponent<Bishop_Crab>();
             if (bishopCrab != null)
             {
@@ -333,6 +334,15 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Hit BossHealth");
                 continue; // Move to the next enemy in the loop
             }
+
+            Piranha piranha = enemy.GetComponent<Piranha>();
+            if (piranha != null)
+            {
+                piranha.TakeDamage(attackDamage);
+                Debug.Log("Hit BossHealth");
+                continue; // Move to the next enemy in the loop
+            }
+
 
 
             /*enemy.GetComponent<Bishop_Crab>().TakeDamage(attackDamage);

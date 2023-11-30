@@ -43,6 +43,13 @@ public class projectileDmg : MonoBehaviour
                 bossHealth.TakeDamage(10);
                 Debug.Log("Hit BossHealth");
             }
+
+            Piranha piranha = GetComponent<Piranha>();
+            if (piranha != null)
+            {
+                piranha.TakeDamage(200);
+                Debug.Log("Hit BossHealth");
+            }
         }
     }
 }

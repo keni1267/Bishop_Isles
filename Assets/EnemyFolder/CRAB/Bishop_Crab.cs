@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bishop_Crab : MonoBehaviour
 {
     public Animator animator;
-    public int maxHealth = 500;
+    private int maxHealth = 500;
     int currentHealth;
 
     void Start()
@@ -19,6 +19,7 @@ public class Bishop_Crab : MonoBehaviour
     {
         
         currentHealth -= damage;
+        Debug.Log(currentHealth);
         animator.SetTrigger("Hurt");
         //play hurt animation
 
