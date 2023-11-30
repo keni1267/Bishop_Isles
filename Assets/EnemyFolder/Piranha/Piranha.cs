@@ -6,7 +6,7 @@ using UnityEngine;
 public class Piranha : MonoBehaviour
 {
     public Animator animator;
-    public int maxHealth = 500;
+    private int maxHealth = 100;
     int currentHealth;
 
     void Start()
@@ -20,6 +20,8 @@ public class Piranha : MonoBehaviour
     {
         currentHealth -= damage;
         animator.SetTrigger("Hurt");
+        Debug.Log(currentHealth);
+        Debug.Log("Pirana HITTTTT");
         //play hurt animation
 
 

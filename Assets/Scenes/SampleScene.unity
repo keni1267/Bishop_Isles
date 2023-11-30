@@ -26981,7 +26981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &133727165
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -27577,7 +27577,6 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 8
-  attackDamage: 50
   dirX: 0
 --- !u!114 &171523579
 MonoBehaviour:
@@ -41253,7 +41252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 681331155}
-  maxHealth: 500
 --- !u!61 &681331157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42788,7 +42786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 863455920}
-  maxHealth: 500
 --- !u!61 &863455916
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48202,7 +48199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1586111500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48694,7 +48691,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1687842144}
-  maxHealth: 500
 --- !u!61 &1687842146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49897,7 +49893,7 @@ GameObject:
   - component: {fileID: 1876257462}
   m_Layer: 0
   m_Name: SideWay_Spear_1
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50756,7 +50752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1917315877}
-  maxHealth: 500
 --- !u!61 &1917315879
 BoxCollider2D:
   m_ObjectHideFlags: 0

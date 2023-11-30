@@ -51,7 +51,7 @@ public class player_health : MonoBehaviour
     public void Damage(int amount){
         if(health > 0){
             health -= amount;                
-            Debug.Log(health);
+            //Debug.Log(health);
         }
          if(health <= 0){
             gameManager.gameOver();
