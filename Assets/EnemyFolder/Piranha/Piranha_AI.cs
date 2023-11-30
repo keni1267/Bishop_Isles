@@ -23,6 +23,7 @@ public class Piranha_AI : MonoBehaviour
     private float intTimer;
     private bool hasAttacked = false; //so it only gets damage once
     #endregion
+    [SerializeField] private AudioSource fishattack_sound;
 
     void Awake()
     {
@@ -102,7 +103,11 @@ public class Piranha_AI : MonoBehaviour
         timer = intTimer; //reset timer when player in attack range
         attackMode = true;
         anim.SetTrigger("Attack"); // same as anim.SetBool("Attack", true) but it doesn't glitch as much
+        if (!fishattack_sound.isPlaying)
+        {
+            fishattack_sound.Play();
 
+        }
         if (attackMode && playerHealth != null)
             playerHealth.Damage(damage);
     }

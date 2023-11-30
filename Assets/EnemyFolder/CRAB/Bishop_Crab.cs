@@ -7,6 +7,7 @@ public class Bishop_Crab : MonoBehaviour
     public Animator animator;
     private int maxHealth = 150;
     int currentHealth;
+    [SerializeField] private AudioSource crabhurt_sound;
 
     void Start()
     {
@@ -17,14 +18,19 @@ public class Bishop_Crab : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+
         
         currentHealth -= damage;
         Debug.Log(currentHealth);
         animator.SetTrigger("Hurt");
         //play hurt animation
+        if (!crabhurt_sound.isPlaying)
+        {
+            crabhurt_sound.Play();
+            //rod_attack_sound.Stop();
+        }
 
-
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
 

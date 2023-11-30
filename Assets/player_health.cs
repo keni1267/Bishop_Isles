@@ -23,6 +23,10 @@ public class player_health : MonoBehaviour
 
     float lastfiretime;
 
+    [SerializeField] private AudioSource hurt_sound;
+    [SerializeField] private AudioSource died_sound;
+    [SerializeField] private AudioSource heal_sound;
+
 
     void Start()
     {
@@ -56,6 +60,11 @@ public class player_health : MonoBehaviour
             //Debug.Log(health);
         }
          if(health <= 0){
+            if (!died_sound.isPlaying)
+            {
+                died_sound.Play();
+
+            }
             gameManager.gameOver();
             Debug.Log("Dead");
             //Destroy(gameObject);
@@ -63,6 +72,11 @@ public class player_health : MonoBehaviour
             //SceneManager.LoadScene("GameOverScreen");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
          }
+        if (!hurt_sound.isPlaying)
+        {
+            hurt_sound.Play();
+            
+        }
 
     }
     //the player is destroyed if it dies
@@ -75,7 +89,12 @@ public class player_health : MonoBehaviour
             Debug.Log(health);
             //Destroy(gameObject);
         }
-   }
+        if (!heal_sound.isPlaying)
+        {
+            heal_sound.Play();
+
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
