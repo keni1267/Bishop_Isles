@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Projectile
+  - Healthpickup
+  - Cloak
+  - BOSS
+  - right
+  - left
+  - sright
+  - sleft
+  - middle
   layers:
   - Default
   - TransparentFX
@@ -14,9 +22,9 @@ TagManager:
   - UI
   - ground
   - chief
-  - 
-  - 
-  - 
+  - Pickup
+  - boss
+  - player
   - 
   - 
   - 

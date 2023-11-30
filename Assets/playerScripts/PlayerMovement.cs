@@ -8,18 +8,19 @@ using System;
 using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb; // Changed it to public - Brian
     private BoxCollider2D CC;
     [SerializeField] private LayerMask jumpableArea;
     private Animator anim;
-
+    //Brian code
+    public bool canMove;
     private float dirX = 0f;
     private bool att = false;
     bool fisherman_facing; //false for not flipped facing right //true for flipped facing left
     [SerializeField]
     private float moveSpeed = 7f;
     [SerializeField]
-    private float jumpForce = 30f;
+    private float jumpForce = 14f;
 
     private SpriteRenderer sprite;
 
@@ -31,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     string inData = "6\n";
     int last_movement = 0;
     public static SerialPort our_controller = new SerialPort("/dev/cu.usbserial-0001", 115200);
+    Renderer rend;
+    Color c;
 
 
     //attack
@@ -45,15 +48,15 @@ public class PlayerMovement : MonoBehaviour
     bool jump_controller = false;
     //public GameOverScreen GameOverScreen;
     public GameManagerScript gameManager;
+    public Healthpickup pickup;
+    public player_health playerH;
     private bool isDead;
 
 
 
     [SerializeField] private AudioSource running_sound;
-    public float health;
-    public float max_health;
-    public Image HealthBar;
-
+    [SerializeField] private AudioSource rod_attack_sound;
+    [SerializeField] private AudioSource spear_attack_sound;
 
     //[SerializeField] private Transform characterTransform;
 
@@ -63,7 +66,8 @@ public class PlayerMovement : MonoBehaviour
         running,
         attacking,
         jumping,
-        falling
+        falling,
+        spear_attack
     }
 
 
@@ -111,8 +115,9 @@ public class PlayerMovement : MonoBehaviour
             }
 
     }
-    private void Start()
-    {max_health = health;
+    // changing it to public - Brian
+    public void Start()
+    {
         our_controller.Close();
 
         _t2 = new Thread(_func2);
@@ -123,15 +128,24 @@ public class PlayerMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         Debug.Log("RESTARTEEEEEED");
+        gameManager.ResumeGame();
         fisherman_facing = sprite.flipX;
 
+        rend = GetComponent<Renderer>();
+        c = rend.material.color;
 
+        // Brian Code
+        canMove = true;
     }
 
-
-    private void Update()
+    // changing it to public - Brian
+    public void Update()
     {
-        HealthBar.fillAmount = Mathf.Clamp(health / max_health, 0 ,1);
+        if(!canMove) // Brian Code
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         //   Debug.Log(sprite.sprite.name);
         if (sprite.sprite.name.Contains("Fisherman"))
         {
@@ -225,6 +239,12 @@ public class PlayerMovement : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Mouse0) && canAttack) || (rod_attack && canAttack))
         {
+            if(!rod_attack_sound.isPlaying)
+            {
+                rod_attack_sound.Play();
+                //rod_attack_sound.Stop();
+            }
+     
             attack();
 
             canAttack = false;
@@ -234,7 +254,7 @@ public class PlayerMovement : MonoBehaviour
                 inData = last_movement.ToString() + "\n";
 
         }
-
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded()) { Debug.Log("SPAAAAACEEEEE"); }
         if (((Input.GetKeyDown(KeyCode.Space) || jump_controller) && isGrounded()/*anotherthing*/) /*&& isGrounded()*/)
         {
 
@@ -250,8 +270,8 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(KeyCode.Space);
         }
 
-
-        if (transform.position.y < -14.5 &&transform.position.y>-15)
+        Debug.Log(transform.position.y);
+        if (transform.position.y < -13)
         {
             Debug.Log(transform.position.y);
             //isDead(true);
@@ -263,17 +283,30 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Dead");
 
         }
+        
 
 
 
         if (Input.GetMouseButton(1) || spear_attack)
         {
+            if (!spear_attack_sound.isPlaying)
+            {
+                spear_attack_sound.Play();
+                //rod_attack_sound.Stop();
+            }
             if (Time.time > ReadyForNextShot)
             {
+                animator.SetTrigger("spear");
                 if (!from_keyboard)
                     inData = last_movement.ToString() + "\n";
                 ReadyForNextShot = Time.time + 1 / fireRate;
-                shoot();
+                /*while(timer < delay)
+                {
+                    timer += Time.deltaTime;
+                    //yield return null;
+                }*/
+                //shoot();
+                StartCoroutine(ShootAfterDelay(.25f));
             }
 
 
@@ -285,15 +318,44 @@ public class PlayerMovement : MonoBehaviour
     void attack()
     {
         animator.SetTrigger("Attack");
-
+        //Debug.Log("attack called");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         //Collider2D[] hitEnemies  = Physics2D.OverlapBoxAll(attackPoint.position, new Vector2(X,Y), enemyLayers);
 
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            Debug.Log("jsdfncjksdfnjklsdnfjksdncjljsdklcjskldcjklsdcklsdjcklsdjcklsd");
+            Bishop_Crab bishopCrab = enemy.GetComponent<Bishop_Crab>();
+            if (bishopCrab != null)
+            {
+                bishopCrab.TakeDamage(attackDamage);
+                Debug.Log("Hit Bishop_Crab");
+                continue; // Move to the next enemy in the loop
+            }
 
-            enemy.GetComponent<Bishop_Crab>().TakeDamage(attackDamage);
+            // Check for BossHealth component
+            BossHealth bossHealth = enemy.GetComponent<BossHealth>();
+            if (bossHealth != null)
+            {
+                bossHealth.TakeDamage(attackDamage);
+                Debug.Log("Hit BossHealth");
+                continue; // Move to the next enemy in the loop
+            }
+
+            Piranha piranha = enemy.GetComponent<Piranha>();
+            if (piranha != null)
+            {
+                piranha.TakeDamage(attackDamage);
+                Debug.Log("Hit BossHealth");
+                continue; // Move to the next enemy in the loop
+            }
+
+
+
+            /*enemy.GetComponent<Bishop_Crab>().TakeDamage(attackDamage);
+            enemy.GetComponent<BossHealth>().TakeDamage(attackDamage);
+            Debug.Log("Hit here");*/
         }
 
 
@@ -375,6 +437,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded()
     {
+        Debug.Log("HERE IN GROUNDED");
+        Debug.Log(Physics2D.BoxCast(CC.bounds.center, CC.bounds.size, 0f, Vector2.down, .1f, jumpableArea));
         return Physics2D.BoxCast(CC.bounds.center, CC.bounds.size, 0f, Vector2.down, .1f, jumpableArea);
 
 
@@ -393,6 +457,29 @@ public class PlayerMovement : MonoBehaviour
         //gameManager.gameOver();
 
     }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        //Debug.Log("Trigger");
+        //pickup.HealthRestoree();
+        if(collider.gameObject.tag == "Cloak")
+        {
+            Debug.Log("cloak");
+            Destroy(collider.gameObject);
+            StartCoroutine("GetInvisible");
+            //pickup.HealthRestoree();
+        }
+    }
+
+    IEnumerator GetInvisible()
+    {
+        Physics2D.IgnoreLayerCollision (0,3,true);
+        c.a = 0.5f;
+        rend.material.color = c;
+        yield return new WaitForSeconds(20f);
+        Physics2D.IgnoreLayerCollision (0,3,false);
+        c.a = 1f;
+        rend.material.color = c;
+    }
     void FaceMouse()
     {
         Spear.transform.right = direction;
@@ -400,23 +487,23 @@ public class PlayerMovement : MonoBehaviour
     }
     void shoot()
     {
+        
         GameObject spearIns = Instantiate(Projectile, ShootPoint.position, ShootPoint.rotation);
         spearIns.GetComponent<Rigidbody2D>().AddForce(spearIns.transform.right * ProjectileSpeed);
-
+        
 
         Destroy(spearIns, (float)0.3);
     }
-        public void Damage(int amount){
-        if(health > 0){
-            health -= amount;                
-            Debug.Log(health);
-        }
-         if(health <= 0){
-            gameOver();
-            //gameManager.gameOver();
-            SceneManager.LoadScene("GameOverScreen");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-         }
 
+    IEnumerator ShootAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        GameObject spearIns = Instantiate(Projectile, ShootPoint.position, ShootPoint.rotation);
+        spearIns.GetComponent<Rigidbody2D>().AddForce(spearIns.transform.right * ProjectileSpeed);
+        
+
+        Destroy(spearIns, 0.3f);
     }
+
 }

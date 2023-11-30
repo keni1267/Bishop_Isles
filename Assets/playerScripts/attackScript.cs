@@ -12,7 +12,7 @@ public class attackScript : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public int attackDamage = 50;
+    private int attackDamage = 100;
 
     public float dirX;
     /*public float X;
@@ -42,19 +42,19 @@ public class attackScript : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
-        {   
+        /*if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
+        {
             attack();
             canAttack = false;
             StartCoroutine(attackCoolDown());
-            
-        }
-            
 
-        
-        
-        
-        
+        }*/
+
+
+
+
+
+
     }
     void attack()
     {
@@ -63,7 +63,7 @@ public class attackScript : MonoBehaviour
         Collider2D[] hitEnemies  = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         //Collider2D[] hitEnemies  = Physics2D.OverlapBoxAll(attackPoint.position, new Vector2(X,Y), enemyLayers);
 
-
+        Debug.Log("I AM HITTING THE CRAB HERE");
         foreach (Collider2D enemy in hitEnemies)
         {
             
