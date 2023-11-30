@@ -13,6 +13,9 @@ TagManager:
   - sright
   - sleft
   - middle
+  - fire
+  - shock
+  - slice
   layers:
   - Default
   - TransparentFX
